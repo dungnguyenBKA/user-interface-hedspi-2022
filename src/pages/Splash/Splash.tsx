@@ -2,7 +2,6 @@ import React from "react";
 import lottie from "lottie-web";
 import {LOADING_ANIM} from "../../assets/path";
 import Column from "../../components/Column/Column";
-import AppText from "../../components/AppText/AppText";
 
 const Splash: React.FC = () => {
   const loadDiv = React.useRef(null);
@@ -23,13 +22,13 @@ const Splash: React.FC = () => {
 
   return <Column style={{
     height: '100vh',
-    justifyContent:'center',
-    alignItems:'center'
+    justifyContent: 'center',
+    alignItems: 'center'
   }}>
     <div
       style={{
         height: 100,
-    }}
+      }}
       ref={loadDiv}/>
   </Column>;
 }

@@ -9,16 +9,29 @@ const Home: React.FC = () => {
   const {signOut, user} = useAuth()
   return <Column>
     <NavBar/>
-    <AppText>Home</AppText>
+    <AppText
+      fontType={"bold"}
+      style={{
+        fontSize: 20,
+        color: 'red'
+      }}
+    >
+      Home
+    </AppText>
     <Row>
-      <AppText>Hello, {user?.username}</AppText>
+      <AppText
+        style={{
+          fontSize: 16,
+          color: 'green'
+        }}
+        fontType={"semiBold"}
+      >Hello, {user?.username}</AppText>
       <button onClick={() => {
         signOut()
       }}>
         Sign Out
       </button>
     </Row>
-
   </Column>
 }
 
