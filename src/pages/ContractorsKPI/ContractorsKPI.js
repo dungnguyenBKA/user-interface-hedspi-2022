@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { Typography } from '@mui/material';
 import { KPIMockData } from './KPIMockData';
 import DefaultKPICard from '../../components/KPICard/DefaultKPICard';
 import AddKPICard from '../../components/KPICard/AddKPICard';
+import NewKPIForm from '../../components/Form/NewKPIForm';
 
 const ContractorsKPI = () => {
     return (
