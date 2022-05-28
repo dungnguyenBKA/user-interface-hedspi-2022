@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Card from '@mui/material/Card';
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -14,6 +15,12 @@ const DefaultKPICard = ({ data }) => {
     }
 
     const value = precise(data.completed / data.allTask * 100);
+
+    const navigate = useNavigate();
+
+    const navigateToKPI = () => {
+        navigate(`/contractor-KPI/${data.id}`);
+    }
 
     return (
         <Card
@@ -95,7 +102,7 @@ const DefaultKPICard = ({ data }) => {
                 </Typography>
 
                 <Tooltip title={<h3>Nhấn để xem chi tiết KPI</h3>} sx={{ marginTop: "3%", marginBottom: "3%" }}>
-                    <Button variant='contained' color='info'>
+                    <Button variant='contained' color='info' onClick={navigateToKPI}>
                         Xem KPI
                     </Button>
                 </Tooltip>
