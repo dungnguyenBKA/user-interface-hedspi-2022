@@ -4,12 +4,13 @@ import './decline-submitted.css'
 
 export function DeclineSubmitted ()  {
     return (
-        <div >
-            <NavBar/>
-            <p>Nội dung từ chối phê duyệt</p>
-                <input id="foreman-comments" className="form-text"></input>
-                <button className="btn-give btn btn-primary">Gửi lại cho công nhân</button>
-            </div>
+        <div className="declineSubmitted" >
+        <NavBar/>
+              <p id="decline-title">Nội dung từ chối phê duyệt</p>
+              <textarea id="foreman-comments" className="form-control" rows="5"></textarea>
+              <br></br>
+              <button className="btn-give btn btn-danger">Gửi lại cho công nhân</button>
+          </div>
 
     )
 }
