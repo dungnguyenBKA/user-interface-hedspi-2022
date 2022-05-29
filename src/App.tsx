@@ -11,13 +11,18 @@ import ContractorsKPI from './pages/ContractorsKPI/ContractorsKPI';
 import ContractorSingleKPI from './pages/ContractorsKPI/ContractorSingleKPI';
 import ManagerKPI from './pages/ManagerKPI/ManagerKPI';
 import ManagerSingleKPI from './pages/ManagerKPI/ManagerSingleKPI';
+import {WorkSubmitted} from "./pages/ForemanManage/WorkSubmitted";
+import {DeclineSubmitted} from "./pages/ForemanManage/DeclineSubmitted";
+import Foreman from "./pages/ForemanManage/ForemanManage";
 
 function App() {
   return <BrowserRouter>
     <Routes>
       <Route path="/" element={wrapWithLoginRequire(<Home />)} />
-      <Route path="/about" element={wrapWithLoginRequire(<About />)} />
-      <Route path="/contractor-KPI" element={wrapWithLoginRequire(<ContractorsKPI />)} />
+
+      <Route path="/work-submit" element={wrapWithLoginRequire(<WorkSubmitted />)} />
+      <Route path="/decline" element={wrapWithLoginRequire(<DeclineSubmitted />)} />
+      <Route path="/foreman" element={wrapWithLoginRequire(<Foreman />)} />
 
       <Route path='contractor-KPI'>
         <Route index element={wrapWithLoginRequire(<ContractorsKPI />)} />
