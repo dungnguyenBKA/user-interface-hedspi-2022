@@ -9,7 +9,8 @@ import { wrapWithLoginRequire } from "./components/RequireLogin/RequireLogin";
 // A. contractor KPI routers
 import ContractorsKPI from './pages/ContractorsKPI/ContractorsKPI';
 import ContractorSingleKPI from './pages/ContractorsKPI/ContractorSingleKPI';
-
+import ManagerKPI from './pages/ManagerKPI/ManagerKPI';
+import ManagerSingleKPI from './pages/ManagerKPI/ManagerSingleKPI';
 
 function App() {
   return <BrowserRouter>
@@ -21,6 +22,10 @@ function App() {
       <Route path='contractor-KPI'>
         <Route index element={wrapWithLoginRequire(<ContractorsKPI />)} />
         <Route path=':id' element={<ContractorSingleKPI />} />
+      </Route>
+      <Route path='manager-KPI'>
+        <Route index element={wrapWithLoginRequire(<ManagerKPI/>)} />
+        <Route path=':id' element={<ManagerSingleKPI />} />
       </Route>
     </Routes>
   </BrowserRouter>
