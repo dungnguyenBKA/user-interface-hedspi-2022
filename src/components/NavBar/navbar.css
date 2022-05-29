@@ -1,0 +1,38 @@
+/*BACKGROUND */
+.navbar{
+    background-color: #198754 ;
+    height: 50px;
+    padding: 0px;
+}
+/*FLEX*/
+.navbar> .container-fluid {
+    display: flex;
+    justify-content: space-between;
+}
+/*Link*/
+.navbar> .container-fluid >.navbar-brand > #nav-icon{
+    height:40px;
+    width: 40px;
+}
+.navbar> .container-fluid >.link {
+    color: var(--bs-light);
+    padding-left: 5px;
+    text-decoration: none;
+}
+.navbar> .container-fluid >.link:hover {
+    color: rgb(144,238,144);
+    text-shadow: 0.1em 0.1em 0.3em var(--bs-dark);
+}
+.navbar> .container-fluid >.link:active {
+    color: black;
+    text-shadow: 0.2em 0.2em 0.3em var(--bs-light);
+    transform: translateX(20px);
+    transition: 0.2s;
+}
+.navbar> .container-fluid p {
+    color: var(--bs-light);
+    padding-left: 5px;
+    text-decoration: none;
+    margin-bottom: 0px;
+    
+}
