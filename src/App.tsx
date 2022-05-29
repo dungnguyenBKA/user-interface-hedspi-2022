@@ -11,6 +11,10 @@ import ContractorsKPI from './pages/ContractorsKPI/ContractorsKPI';
 import ContractorSingleKPI from './pages/ContractorsKPI/ContractorSingleKPI';
 import ManagerKPI from './pages/ManagerKPI/ManagerKPI';
 import ManagerSingleKPI from './pages/ManagerKPI/ManagerSingleKPI';
+
+import Statistic from './pages/Statistic/Statistic';
+import StatisticDetailTeam from './pages/Statistic/StatisticDetailTeam';
+
 import {WorkSubmitted} from "./pages/ForemanManage/WorkSubmitted";
 import {DeclineSubmitted} from "./pages/ForemanManage/DeclineSubmitted";
 import Foreman from "./pages/ForemanManage/ForemanManage";
@@ -31,6 +35,10 @@ function App() {
       <Route path='manager-KPI'>
         <Route index element={wrapWithLoginRequire(<ManagerKPI/>)} />
         <Route path=':id' element={<ManagerSingleKPI />} />
+      </Route>
+      <Route path='statistic'>
+        <Route index element={wrapWithLoginRequire(<Statistic/>)} />
+        <Route path=':id' element={<StatisticDetailTeam />} />
       </Route>
     </Routes>
   </BrowserRouter>
