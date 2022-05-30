@@ -25,7 +25,7 @@ const AddKPICard = () => {
             }}
         >
             <Tooltip
-                title={<h2>Nhấn để thêm KPI mới</h2>}
+                title={<h5>Nhấn để thêm KPI mới</h5>}
                 sx={{
                     marginTop: "60%"
                 }}

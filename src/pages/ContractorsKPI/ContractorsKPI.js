@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import { Typography } from '@mui/material';
-import { KPIMockData } from './KPIMockData';
+import {Typography} from '@mui/material';
+import {KPIMockData} from './KPIMockData';
 import DefaultKPICard from '../../components/KPICard/DefaultKPICard';
 import AddKPICard from '../../components/KPICard/AddKPICard';
-import NewKPIForm from '../../components/Form/NewKPIForm';
+import NavBar from "../../components/NavBar/NavBar";
+import Footer from "../../components/Footer/footer";
 
 const ContractorsKPI = () => {
     return (
@@ -18,7 +19,7 @@ const ContractorsKPI = () => {
                 overflow: "visible",
             }}
         >
-
+            <NavBar/>
             <Typography
                 sx={{
                     fontSize: "30px",
@@ -36,14 +37,15 @@ const ContractorsKPI = () => {
                             item xs={12} sm={6} md={4} lg={3} xl={2}
                             key={element.id}
                         >
-                            <DefaultKPICard data={element} />
+                            <DefaultKPICard data={element}/>
                         </Grid>
                     ))}
                     <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-                        <AddKPICard />
+                        <AddKPICard/>
                     </Grid>
                 </Grid>
             </Box>
+            <Footer/>
         </Box>
     );
 }

@@ -101,7 +101,7 @@ const DefaultKPICard = ({ data }) => {
                     Đã xong: {`${data.completed}/${data.allTask}`}
                 </Typography>
 
-                <Tooltip title={<h3>Nhấn để xem chi tiết KPI</h3>} sx={{ marginTop: "3%", marginBottom: "3%" }}>
+                <Tooltip title={<h5>Nhấn để xem chi tiết KPI</h5>} sx={{ marginTop: "3%", marginBottom: "3%" }}>
                     <Button variant='contained' color='info' onClick={navigateToKPI}>
                         Xem KPI
                     </Button>

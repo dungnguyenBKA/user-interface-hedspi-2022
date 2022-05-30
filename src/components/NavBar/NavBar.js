@@ -16,7 +16,8 @@ const NavBar = () => {
           />
         </Link>
         <Link className='link' to='/'>Trang chủ</Link>
-        <Link className='link' to='/manager-KPI'>Quản lý KPI</Link>
+        <Link className='link' to='/manager-KPI'>Quản lý KPI quản đốc</Link>
+        <Link className='link' to='/contractor-KPI'>Quản lý KPI nhà thầu</Link>
         <Link className='link' to='/foreman'>Quản lý công việc</Link>
         <Link className='link' to='/statistic'>Báo cáo thống kê</Link>
         <Link className='link' to='/'>Liên hệ</Link>

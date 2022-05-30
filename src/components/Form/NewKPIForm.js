@@ -92,7 +92,9 @@ const NewKPIForm = ({ open, onChangeKPIForm }) => {
                     <Typography sx={{ fontWeight: "bold", flex: 5, fontSize: "20px" }}>Giao việc cho </Typography>
                     <Box sx={{ width: "70%" }}>
                         <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">Danh sách quản đốc</InputLabel>
+                            <InputLabel
+                              variant="outlined"
+                              id="demo-simple-select-label">Danh sách quản đốc</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
