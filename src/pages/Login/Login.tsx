@@ -6,6 +6,7 @@ import Row from "../../components/Row/Row";
 const Login: React.FC = () => {
   const {signIn} = useAuth()
   return <Row>
+    
     <AppText>Login with user: DungnguyenBKA</AppText>
     <button
       onClick={() => {

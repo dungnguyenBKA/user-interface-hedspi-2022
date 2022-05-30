@@ -1,0 +1,68 @@
+/* Basic setup footer */
+#footer {
+    display: flex;
+    flex-direction: row;
+    padding: 2% ;
+    background-color: var(--bs-light); ;
+    color: green;
+}
+
+.footer-link {
+    color: #000;
+    display: inline !important;
+    text-decoration: none;
+}
+
+.footer-link:hover{
+    color: #FFF;
+}
+
+#footer > #contain-footer-icon , #footer > #footer-menu,#footer > #footer-team {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    
+}
+#footer > #contain-footer-icon{
+    padding-left: 6%;
+    padding-right: 9%;
+}
+#footer > #footer-menu,#footer{
+    padding-right: 5%;
+}
+
+/* Contain Footer Icon */
+#footer > #contain-footer-icon {
+    justify-content: center;
+    align-items: center;
+}
+
+#footer > #contain-footer-icon > img{
+    height: 100px;
+    width: 100px;
+}
+
+/* Footer Name */
+
+
+/* Footer Menu */
+
+#footer > #footer-menu > #teacher-name{
+    font-size: 36px;
+    margin-bottom: 5%;
+}
+
+#footer > #footer-menu > .footer-link{
+    margin-bottom : 5px ;
+    margin-top: 0px;
+}
+
+/* Footer Team */
+#footer > #footer-team > #team-name{
+    font-size: 36px;
+    margin-bottom: 7%;
+}
+#footer > #footer-team p{
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
