@@ -2,6 +2,7 @@ import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
 import './foreman.css';
 import {Link} from 'react-router-dom';
+import Footer from "../../components/Footer/footer";
 
  function Foreman ()  {
     return (
@@ -52,11 +53,12 @@ import {Link} from 'react-router-dom';
                     <td><Link  className='link-content' to='/work-submit'>Sửa chữa hệ thống điện phòng 503</Link></td>
                     <td><button className="btn btn-danger btn1">Đang chờ duyệt</button></td>
                 </tr>
-    
-      
+
+
             </tbody>
             </table>
-            </div>   
+            </div>
+          <Footer/>
         </div>
 
     )
