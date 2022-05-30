@@ -20,7 +20,7 @@ const NavBar = () => {
     </Link>
     <Link className='link' to='/'>Trang chủ</Link>
     <Link className='link' to='/'>Quản lý KPI</Link>
-    <Link className='link' to='/'>Quản lý công việc</Link>
+    <Link className='link' to='/foreman'>Quản lý công việc</Link>
     <Link className='link' to='/'>Báo cáo thống kê</Link>
     <Link className='link' to='/'>Liên hệ</Link>
     <p>Hello, {user?.username}</p>

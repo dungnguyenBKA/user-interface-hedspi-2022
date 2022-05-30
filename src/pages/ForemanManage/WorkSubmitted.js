@@ -1,6 +1,7 @@
 import React from "react";
 import NavBar from "../../components/NavBar/NavBar";
-
+import Foreman from "./ForemanManage";
+import {Link} from 'react-router-dom'
 import './work-submitted.css'
 
 export function WorkSubmitted  ()  {
@@ -25,10 +26,23 @@ export function WorkSubmitted  ()  {
                 </div>
             </div>
             <div className="accept-btn">
-                <button className="btn-accept btn btn-success">Phê duyệt</button>
-                <button className="btn-decline btn btn-danger"  >Từ chối phê duyệt</button>
-                
-            </div>
+                <button className="btn-accept btn btn-success" ><Link to='/foreman' className="accept-btn-link">Phê duyệt</Link></button>
+                <button className="btn-decline btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" >Từ chối phê duyệt</button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <strong class="modal-title" id="exampleModalLabel">Nội dung từ chối phê duyệt</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                            <textarea id="foreman-comments" className="form-control modal-body" rows="5"></textarea>
+                                                <div class="modal-footer">
+                                                    <a href='/foreman' className="accept-btn-link btn btn-danger">Gửi lại cho công nhân</a>
+                                                </div>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
     )
 }
