@@ -8,15 +8,14 @@ import MenuItem from '@mui/material/MenuItem';
 import { TextField } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
-import e from 'express';
 
 const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 500,
-    height: 375,
+    width: 550,
+    height: 400,
     bgcolor: 'background.paper',
     border: 1,
     boxShadow: 24,
@@ -24,9 +23,10 @@ const style = {
     borderRadius: "10px",
 };
 
-const NewKPIForm = ({ open, onChangeKPIForm, onAddNewKPI }) => {
+const NewKPIForm = ({ open, setOpen, onChangeKPIForm, onAddNewKPI }) => {
 
     const [newKPI, setNewKPI] = useState({
+        id: 8,
         name: "",
         deadline: "",
         allTask: 0,
@@ -34,7 +34,14 @@ const NewKPIForm = ({ open, onChangeKPIForm, onAddNewKPI }) => {
         manager: ""
     });
 
-    const onHandleChange = (event) => setNewKPI({ ...newKPI, [event.target.name]: e.target.value })
+    const onHandleChange = (event) => {
+        setNewKPI({ ...newKPI, [event.target.name]: event.target.value });
+    }
+
+    const onCreateNewKPI = () => {
+        setOpen(!open); 
+        onAddNewKPI(newKPI);
+    }
 
     return (
         <Modal
@@ -123,7 +130,7 @@ const NewKPIForm = ({ open, onChangeKPIForm, onAddNewKPI }) => {
                 </Box>
 
                 <Button
-                    onClick={() => onAddNewKPI(newKPI)}
+                    onClick={onCreateNewKPI}
                     variant='contained'
                     color='success'
                     sx={{

@@ -51,6 +51,7 @@ const AddKPICard = ({ onAddNewKPI }) => {
                 open={open}
                 onChangeKPIForm={onChangeKPIForm}
                 onAddNewKPI={onAddNewKPI}
+                setOpen={setOpen}
             />
         </Card>
     )
