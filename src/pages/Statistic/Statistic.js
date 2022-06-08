@@ -2,12 +2,15 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import {Typography} from '@mui/material';
-import {KPIMockData, ManagerList} from './KPIMockData';
-import ManagerKPICard from '../../components/KPICard/ManagerKPICard';
+import {teams} from './StatisticMockData';
+import TeamCard from '../../components/Statistic/TeamCard';
+import AddTeamCard from '../../components/Statistic/AddTeamCard';
+import {CircularProgressbar} from "react-circular-progressbar";
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/footer";
 
-const ManagerKPI = () => {
+
+const Statistic = () => {
   return (
     <Box
       sx={{
@@ -18,8 +21,8 @@ const ManagerKPI = () => {
         overflow: "visible",
       }}
     >
-      <NavBar/>
 
+      <NavBar/>
       <Typography
         sx={{
           fontSize: "30px",
@@ -29,6 +32,31 @@ const ManagerKPI = () => {
       >
         DỰ ÁN LẮP ĐẶT HỆ THỐNG ĐIỆN CHO VINCOM HAI BÀ TRƯNG
       </Typography>
+      <div style={{margin: 'auto', width: '30%', display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <Box position="relative" width="80%" height="80%"
+             shadow="xl"
+             borderRadius="xl"
+             mt="10px"
+             sx={{flex: 5}}
+        >
+          <CircularProgressbar
+            value={30}
+            text={`30%`}
+            strokeWidth={5}
+          />
+        </Box>
+        <Typography
+          variant='button'
+          fontWeight="bold"
+          color="dodgerblue"
+          fontSize="30px"
+          textTransform="none"
+        >
+          Đã xong: 42/148
+        </Typography>
+      </div>
+
+
       <Typography
         sx={{
           fontSize: "30px",
@@ -36,19 +64,20 @@ const ManagerKPI = () => {
           marginTop: "30px"
         }}
       >
-        KPI được giao cho Quản đốc: {ManagerList[1].name}
+        Danh sach va tien do cac team
       </Typography>
       <Box p={5}>
         <Grid container spacing={6}>
-          {KPIMockData.map((element) => (
+          {teams.map((element) => (
             <Grid
               item xs={12} sm={6} md={4} lg={3} xl={2}
               key={element.id}
             >
-              <ManagerKPICard data={element}/>
+              <TeamCard data={element}/>
             </Grid>
           ))}
           <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+            <AddTeamCard/>
           </Grid>
         </Grid>
       </Box>
@@ -57,4 +86,4 @@ const ManagerKPI = () => {
   );
 }
 
-export default ManagerKPI;
+export default Statistic;

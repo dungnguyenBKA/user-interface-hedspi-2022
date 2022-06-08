@@ -8,7 +8,6 @@ import MenuItem from '@mui/material/MenuItem';
 import { TextField } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
-import e from 'express';
 
 const style = {
     position: 'absolute',
@@ -24,18 +23,12 @@ const style = {
     borderRadius: "10px",
 };
 
-const NewKPIForm = ({ open, onChangeKPIForm, onAddNewKPI }) => {
+const NewAddTeamForm = ({ open, onChangeKPIForm }) => {
+    const [age, setAge] = React.useState('');
 
-    const [newKPI, setNewKPI] = useState({
-        name: "",
-        deadline: "",
-        allTask: 0,
-        completed: 0,
-        manager: ""
-    });
-
-    const onHandleChange = (event) => setNewKPI({ ...newKPI, [event.target.name]: e.target.value })
-
+    const handleChange = (event) => {
+        setAge(event.target.value);
+    };
     return (
         <Modal
             open={open}
@@ -49,7 +42,7 @@ const NewKPIForm = ({ open, onChangeKPIForm, onAddNewKPI }) => {
                     fontWeight="bold"
                     sx={{ textAlign: "center" }}
                 >
-                    Nhập thông tin về KPI mới
+                    Nhập thông tin về nhóm mới
                 </Typography>
 
                 <Box
@@ -60,15 +53,11 @@ const NewKPIForm = ({ open, onChangeKPIForm, onAddNewKPI }) => {
                         marginTop: "5%"
                     }}
                 >
-                    <Typography sx={{ fontWeight: "bold", flex: 5, fontSize: "20px" }}>Tên KPI</Typography>
+                    <Typography sx={{ fontWeight: "bold", flex: 5, fontSize: "20px" }}>Tên nhóm</Typography>
                     <TextField
                         id="outlined-password-input"
-                        label="Tên KPI"
                         type="text"
                         sx={{ width: "70%" }}
-                        value={newKPI.name}
-                        name="name"
-                        onChange={onHandleChange}
                     />
                 </Box>
 
@@ -80,16 +69,6 @@ const NewKPIForm = ({ open, onChangeKPIForm, onAddNewKPI }) => {
                         marginTop: "5%"
                     }}
                 >
-                    <Typography sx={{ fontWeight: "bold", flex: 5, fontSize: "20px" }}>Hạn chót</Typography>
-                    <TextField
-                        id="outlined-password-input"
-                        label="Ngày hạn chót"
-                        type="text"
-                        sx={{ width: "70%" }}
-                        value={newKPI.deadline}
-                        name="deadline"
-                        onChange={onHandleChange}
-                    />
                 </Box>
 
                 <Box
@@ -100,19 +79,16 @@ const NewKPIForm = ({ open, onChangeKPIForm, onAddNewKPI }) => {
                         marginTop: "5%"
                     }}
                 >
-                    <Typography sx={{ fontWeight: "bold", flex: 5, fontSize: "20px" }}>Giao việc cho </Typography>
+                    <Typography sx={{ fontWeight: "bold", flex: 5, fontSize: "20px" }}>Quản đốc </Typography>
                     <Box sx={{ width: "70%" }}>
                         <FormControl fullWidth>
-                            <InputLabel
-                                variant="outlined"
-                                id="demo-simple-select-label">Danh sách quản đốc</InputLabel>
+                            <InputLabel id="demo-simple-select-label">Danh sách quản đốc</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
-                                value={newKPI.manager}
-                                name="manager"
+                                // value={age}
                                 // label="Danh sách quản đốc"
-                                onChange={onHandleChange}
+                                onChange={handleChange}
                             >
                                 <MenuItem value={'Nguyễn Min Dũn'}>Nguyễn Min Dũn</MenuItem>
                                 <MenuItem value={'Nguyễn Gia Thanh'}>Nguyễn Gia Thanh</MenuItem>
@@ -123,7 +99,6 @@ const NewKPIForm = ({ open, onChangeKPIForm, onAddNewKPI }) => {
                 </Box>
 
                 <Button
-                    onClick={() => onAddNewKPI(newKPI)}
                     variant='contained'
                     color='success'
                     sx={{
@@ -135,7 +110,7 @@ const NewKPIForm = ({ open, onChangeKPIForm, onAddNewKPI }) => {
                         fontSize: "18px"
                     }}
                 >
-                    Tạo KPI
+                    Tạo
                 </Button>
 
             </Box>
@@ -143,4 +118,4 @@ const NewKPIForm = ({ open, onChangeKPIForm, onAddNewKPI }) => {
     );
 }
 
-export default NewKPIForm;
+export default NewAddTeamForm;

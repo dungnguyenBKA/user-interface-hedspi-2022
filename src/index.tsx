@@ -14,6 +14,7 @@ import "./fonts/semiBold.ttf"
 import "./fonts/regular.ttf"
 import "./fonts/medium.ttf"
 
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -30,6 +31,5 @@ root.render(
         <App/>
       </PersistGate>
     </Provider>
-
   </React.StrictMode>
 );

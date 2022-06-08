@@ -5,9 +5,25 @@ import { Typography } from '@mui/material';
 import { KPIMockData } from './KPIMockData';
 import DefaultKPICard from '../../components/KPICard/DefaultKPICard';
 import AddKPICard from '../../components/KPICard/AddKPICard';
-import NewKPIForm from '../../components/Form/NewKPIForm';
+import NavBar from "../../components/NavBar/NavBar";
+import Footer from "../../components/Footer/footer";
 
 const ContractorsKPI = () => {
+
+    const [KPIData, setKPIData] = useState(KPIMockData);
+
+    const onAddNewKPI = (newKPI) => {
+        setKPIData([...KPIData, newKPI]);
+    }
+
+    const onDeleteKPI = (KPIid) => {
+        setKPIData(KPIData.filter(e => e.id !== KPIid));
+    }
+
+    // const onSearchKPI = (inputName) => {
+
+    // }
+
     return (
         <Box
             sx={{
@@ -18,7 +34,7 @@ const ContractorsKPI = () => {
                 overflow: "visible",
             }}
         >
-
+            <NavBar />
             <Typography
                 sx={{
                     fontSize: "30px",
@@ -31,7 +47,7 @@ const ContractorsKPI = () => {
 
             <Box p={5}>
                 <Grid container spacing={6}>
-                    {KPIMockData.map((element) => (
+                    {KPIData.map((element) => (
                         <Grid
                             item xs={12} sm={6} md={4} lg={3} xl={2}
                             key={element.id}
@@ -40,10 +56,11 @@ const ContractorsKPI = () => {
                         </Grid>
                     ))}
                     <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-                        <AddKPICard />
+                        <AddKPICard onAddNewKPI={onAddNewKPI} />
                     </Grid>
                 </Grid>
             </Box>
+            <Footer />
         </Box>
     );
 }

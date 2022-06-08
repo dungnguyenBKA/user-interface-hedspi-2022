@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { Card, Typography, Tooltip } from "@mui/material";
-import NewKPIForm from '../Form/NewKPIForm';
 import { IconButton } from '@mui/material';
+import NewAddTeamForm from '../Form/NewAddTeamForm'
 
-const AddKPICard = ({ onAddNewKPI }) => {
+const AddTeamCard = () => {
 
     const [open, setOpen] = useState(false);
     const onChangeKPIForm = () => setOpen(!open);
@@ -25,13 +25,13 @@ const AddKPICard = ({ onAddNewKPI }) => {
             }}
         >
             <Tooltip
-                title={<h5>Nhấn để thêm KPI mới</h5>}
+                title={<h2>Nhấn để tạo nhóm</h2>}
                 sx={{
                     marginTop: "60%"
                 }}
             >
                 <IconButton onClick={onChangeKPIForm}>
-                    <AddCircleOutlineIcon fontSize='large' />
+                    <AddCircleOutlineIcon fontSize='large'/>
                 </IconButton>
             </Tooltip>
 
@@ -45,15 +45,11 @@ const AddKPICard = ({ onAddNewKPI }) => {
                     marginBottom: "60%"
                 }}
             >
-                Thêm KPI
+                Tạo nhóm mới
             </Typography>
-            <NewKPIForm
-                open={open}
-                onChangeKPIForm={onChangeKPIForm}
-                onAddNewKPI={onAddNewKPI}
-            />
+            <NewAddTeamForm open={open} onChangeKPIForm={onChangeKPIForm}/>
         </Card>
     )
 }
 
-export default AddKPICard;
+export default AddTeamCard;

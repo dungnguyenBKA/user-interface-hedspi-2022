@@ -1,0 +1,43 @@
+.foreman-header{
+    padding: 10px 5%;
+    margin-bottom: 10px;
+}
+
+#work-content{
+    padding-bottom: 0px;
+    margin-left: 15%;
+    margin-top: 10px;
+}
+#work-content p{
+    padding-bottom: 0px;
+    padding-left: 0px;
+    color: green;
+}
+.foreman-body{
+    width: 90%;
+    margin-left: 5%;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin-top: 30px;
+    padding-bottom: 0px;
+}
+ .btn1{
+    width: 150px;
+}
+#foreman-content2{
+    padding-left: 40px;
+}
+.link-content{
+    color: var(--bs-dark);
+    text-decoration: none;
+}
+.link-content:hover{
+    text-shadow: 0.1em 0.1em 0.3em var(--bs-dark);
+    color: black;
+}
+.link-content:active{
+    color: black;
+    text-shadow: 0.2em 0.2em 0.3em var(--bs-light);
+    transform: translateX(20px);
+    transition: 0.2s;
+}

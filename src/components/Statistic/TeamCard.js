@@ -8,18 +8,16 @@ import Button from "@mui/material/Button";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css"
 
-const DefaultKPICard = ({ data }) => {
-
+const DefaultKPICard = ({data}) => {
     const precise = (x) => {
         return x.toPrecision(4);
     }
-
     const value = precise(data.completed / data.allTask * 100);
 
     const navigate = useNavigate();
 
     const navigateToKPI = () => {
-        navigate(`/contractor-KPI/${data.id}`);
+        navigate(`/statistic/${data.id}`);
     }
 
     return (
@@ -58,16 +56,10 @@ const DefaultKPICard = ({ data }) => {
                     flex: 1
                 }}
             >
-                <Typography variant='button' fontWeight="regular" color="red" textTransform="none" fontSize="15px">
-                    Hạn bàn giao: {data.deadline}
-                </Typography>
+
             </Box>
 
-
-            <Box
-                position="relative"
-                width="70%"
-                height="70%"
+            <Box position="relative" width="70%" height="70%"
                 shadow="xl"
                 borderRadius="xl"
                 mt="10px"
@@ -79,6 +71,7 @@ const DefaultKPICard = ({ data }) => {
                     strokeWidth={5}
                 />
             </Box>
+
 
             <Box
                 mt={1}
@@ -100,10 +93,10 @@ const DefaultKPICard = ({ data }) => {
                 >
                     Đã xong: {`${data.completed}/${data.allTask}`}
                 </Typography>
-
-                <Tooltip title={<h5>Nhấn để xem chi tiết KPI</h5>} sx={{ marginTop: "3%", marginBottom: "3%" }}>
+                <h3>Đốc công: {data.leader}</h3>
+                <Tooltip title={<h3>Nhấn để xem chi tiết</h3>} sx={{ marginTop: "3%", marginBottom: "3%" }}>
                     <Button variant='contained' color='info' onClick={navigateToKPI}>
-                        Xem KPI
+                        Xem chi tiết
                     </Button>
                 </Tooltip>
             </Box>
