@@ -8,6 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { TextField } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
+import e from 'express';
 
 const style = {
     position: 'absolute',
@@ -23,12 +24,18 @@ const style = {
     borderRadius: "10px",
 };
 
-const NewKPIForm = ({ open, onChangeKPIForm }) => {
-    const [age, setAge] = React.useState('');
+const NewKPIForm = ({ open, onChangeKPIForm, onAddNewKPI }) => {
 
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
+    const [newKPI, setNewKPI] = useState({
+        name: "",
+        deadline: "",
+        allTask: 0,
+        completed: 0,
+        manager: ""
+    });
+
+    const onHandleChange = (event) => setNewKPI({ ...newKPI, [event.target.name]: e.target.value })
+
     return (
         <Modal
             open={open}
@@ -58,8 +65,10 @@ const NewKPIForm = ({ open, onChangeKPIForm }) => {
                         id="outlined-password-input"
                         label="Tên KPI"
                         type="text"
-                        // autoComplete="current-password"
                         sx={{ width: "70%" }}
+                        value={newKPI.name}
+                        name="name"
+                        onChange={onHandleChange}
                     />
                 </Box>
 
@@ -76,8 +85,10 @@ const NewKPIForm = ({ open, onChangeKPIForm }) => {
                         id="outlined-password-input"
                         label="Ngày hạn chót"
                         type="text"
-                        // autoComplete="current-password"
                         sx={{ width: "70%" }}
+                        value={newKPI.deadline}
+                        name="deadline"
+                        onChange={onHandleChange}
                     />
                 </Box>
 
@@ -93,14 +104,15 @@ const NewKPIForm = ({ open, onChangeKPIForm }) => {
                     <Box sx={{ width: "70%" }}>
                         <FormControl fullWidth>
                             <InputLabel
-                              variant="outlined"
-                              id="demo-simple-select-label">Danh sách quản đốc</InputLabel>
+                                variant="outlined"
+                                id="demo-simple-select-label">Danh sách quản đốc</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
-                                // value={age}
+                                value={newKPI.manager}
+                                name="manager"
                                 // label="Danh sách quản đốc"
-                                onChange={handleChange}
+                                onChange={onHandleChange}
                             >
                                 <MenuItem value={'Nguyễn Min Dũn'}>Nguyễn Min Dũn</MenuItem>
                                 <MenuItem value={'Nguyễn Gia Thanh'}>Nguyễn Gia Thanh</MenuItem>
@@ -111,6 +123,7 @@ const NewKPIForm = ({ open, onChangeKPIForm }) => {
                 </Box>
 
                 <Button
+                    onClick={() => onAddNewKPI(newKPI)}
                     variant='contained'
                     color='success'
                     sx={{
