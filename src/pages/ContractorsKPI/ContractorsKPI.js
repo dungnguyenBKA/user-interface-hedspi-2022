@@ -8,36 +8,29 @@ import AddKPICard from '../../components/KPICard/AddKPICard';
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/footer";
 import SearchIcon from '@mui/icons-material/Search';
+import useStorage from './useStorage';
 
 const ContractorsKPI = () => {
 
-    const [KPIData, setKPIData] = useState(KPIMockData);
+    const [KPIData, putKPIData, clearKPIData] = useStorage();
 
     const [searchName, setSearchName] = useState('');
     const onChangeSearchName = (event) => {
         if (event.target.value === '') {
-            setKPIData(KPIMockData);
+            putKPIData(KPIMockData);
             setSearchName('');
         } else {
             setSearchName(event.target.value);
             const newKPIArray = KPIData.filter(
                 element => element.name.includes(searchName) === true
             );
-            setKPIData(newKPIArray);
+            putKPIData(newKPIArray);
         }
     }
 
     const onAddNewKPI = (newKPI) => {
-        setKPIData([...KPIData, newKPI]);
+        putKPIData([...KPIData, newKPI]);
     }
-
-    const onDeleteKPI = (KPIid) => {
-        setKPIData(KPIData.filter(e => e.id !== KPIid));
-    }
-
-    // const onSearchKPI = (inputName) => {
-
-    // }
 
     return (
         <>

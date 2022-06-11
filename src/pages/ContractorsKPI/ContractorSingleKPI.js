@@ -13,7 +13,8 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { KPIMockData, jobDataRows } from './KPIMockData';
 import JobTable from '../../components/KPITable/JobTable';
-
+import useStorage from './useStorage';
+import { useNavigate } from 'react-router-dom';
 
 const style = {
     display: "flex",
@@ -51,7 +52,10 @@ const ContractorSingleKPI = () => {
     // 1. get object singleKPI to render main screen
     const { id } = useParams(); //must be the same as in route in App.tsx
     const convertedId = parseInt(id);
-    const singleKPI = KPIMockData.filter(element => element.id === convertedId)[0];
+    const [KPIData, putKPIData, clearKPIData] = useStorage();
+    console.log(KPIData);
+    const singleKPI = KPIData.filter(element => element.id === convertedId)[0];
+    console.log(singleKPI);
 
     // 2. calculate percentage 
     const precise = (x) => {
@@ -65,10 +69,25 @@ const ContractorSingleKPI = () => {
     // 4. deleteOpen 
     const [deleteOpen, setDeleteOpen] = useState(false);
     const onChangeDeleteOpen = () => setDeleteOpen(!deleteOpen);
+    const navigator = useNavigate();
+    const onDeleteKPI = () => {
+        putKPIData(KPIData.filter(ele => ele.id !== convertedId));
+        navigator(`/contractor-KPI`);
+    }
 
     // 5. updateOpen
     const [updateOpen, setUpdateOpen] = useState(false);
+    const [updatedKPI, setUpdatedKPI] = useState(singleKPI);
     const onChangeUpdateOpen = () => setUpdateOpen(!updateOpen);
+    const onHandleUpdateChange = (e) => {
+        setUpdatedKPI({ ...updatedKPI, [e.target.name]: e.target.value });
+    }
+    const onUpdateKPI = () => {
+        KPIData[KPIData.findIndex(el => el.id === convertedId)] = updatedKPI;
+        putKPIData(KPIData);
+        setUpdateOpen(!updateOpen);
+        navigator(`/contractor-KPI/${convertedId}`);
+    }
 
     // 6. value of calendar
     const [deadline, setDeadline] = useState(null);
@@ -268,6 +287,7 @@ const ContractorSingleKPI = () => {
                         variant="contained"
                         color="error"
                         sx={{ width: "15%", marginTop: "5%" }}
+                        onClick={onDeleteKPI}
                     >
                         Xóa
                     </Button>
@@ -294,6 +314,9 @@ const ContractorSingleKPI = () => {
                             type="text"
                             sx={{ width: "70%" }}
                             defaultValue={singleKPI.name}
+                            value={updatedKPI.name}
+                            name="name"
+                            onChange={onHandleUpdateChange}
                         />
                     </Box>
 
@@ -313,6 +336,9 @@ const ContractorSingleKPI = () => {
                             defaultValue={singleKPI.deadline}
                             // autoComplete="current-password"
                             sx={{ width: "70%" }}
+                            value={updatedKPI.deadline}
+                            name="deadline"
+                            onChange={onHandleUpdateChange}
                         />
                     </Box>
 
@@ -332,9 +358,10 @@ const ContractorSingleKPI = () => {
                                     labelId="demo-simple-select-label"
                                     id="demo-simple-select"
                                     defaultValue={singleKPI.manager}
-                                // value={age}
-                                // label="Danh sách quản đốc"
-                                // onChange={handleChange}
+                                    value={updatedKPI.manager}
+                                    name="manager"
+                                    // label="Danh sách quản đốc"
+                                    onChange={onHandleUpdateChange}
                                 >
                                     <MenuItem value={'Nguyễn Min Dũn'}>Nguyễn Min Dũn</MenuItem>
                                     <MenuItem value={'Nguyễn Gia Thanh'}>Nguyễn Gia Thanh</MenuItem>
@@ -344,6 +371,7 @@ const ContractorSingleKPI = () => {
                         </Box>
                     </Box>
                     <Button
+                        onClick={onUpdateKPI}
                         variant="contained"
                         color="success"
                         sx={{
