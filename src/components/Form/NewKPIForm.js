@@ -14,8 +14,8 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 500,
-    height: 375,
+    width: 550,
+    height: 400,
     bgcolor: 'background.paper',
     border: 1,
     boxShadow: 24,
@@ -23,12 +23,26 @@ const style = {
     borderRadius: "10px",
 };
 
-const NewKPIForm = ({ open, onChangeKPIForm }) => {
-    const [age, setAge] = React.useState('');
+const NewKPIForm = ({ open, setOpen, onChangeKPIForm, onAddNewKPI }) => {
 
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
+    const [newKPI, setNewKPI] = useState({
+        id: 8,
+        name: "",
+        deadline: "",
+        allTask: 0,
+        completed: 0,
+        manager: ""
+    });
+
+    const onHandleChange = (event) => {
+        setNewKPI({ ...newKPI, [event.target.name]: event.target.value });
+    }
+
+    const onCreateNewKPI = () => {
+        setOpen(!open); 
+        onAddNewKPI(newKPI);
+    }
+
     return (
         <Modal
             open={open}
@@ -58,8 +72,10 @@ const NewKPIForm = ({ open, onChangeKPIForm }) => {
                         id="outlined-password-input"
                         label="Tên KPI"
                         type="text"
-                        // autoComplete="current-password"
                         sx={{ width: "70%" }}
+                        value={newKPI.name}
+                        name="name"
+                        onChange={onHandleChange}
                     />
                 </Box>
 
@@ -76,8 +92,10 @@ const NewKPIForm = ({ open, onChangeKPIForm }) => {
                         id="outlined-password-input"
                         label="Ngày hạn chót"
                         type="text"
-                        // autoComplete="current-password"
                         sx={{ width: "70%" }}
+                        value={newKPI.deadline}
+                        name="deadline"
+                        onChange={onHandleChange}
                     />
                 </Box>
 
@@ -93,14 +111,15 @@ const NewKPIForm = ({ open, onChangeKPIForm }) => {
                     <Box sx={{ width: "70%" }}>
                         <FormControl fullWidth>
                             <InputLabel
-                              variant="outlined"
-                              id="demo-simple-select-label">Danh sách quản đốc</InputLabel>
+                                variant="outlined"
+                                id="demo-simple-select-label">Danh sách quản đốc</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
-                                // value={age}
+                                value={newKPI.manager}
+                                name="manager"
                                 // label="Danh sách quản đốc"
-                                onChange={handleChange}
+                                onChange={onHandleChange}
                             >
                                 <MenuItem value={'Nguyễn Min Dũn'}>Nguyễn Min Dũn</MenuItem>
                                 <MenuItem value={'Nguyễn Gia Thanh'}>Nguyễn Gia Thanh</MenuItem>
@@ -111,6 +130,7 @@ const NewKPIForm = ({ open, onChangeKPIForm }) => {
                 </Box>
 
                 <Button
+                    onClick={onCreateNewKPI}
                     variant='contained'
                     color='success'
                     sx={{

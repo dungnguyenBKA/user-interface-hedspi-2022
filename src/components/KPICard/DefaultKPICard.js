@@ -14,7 +14,10 @@ const DefaultKPICard = ({ data }) => {
         return x.toPrecision(4);
     }
 
-    const value = precise(data.completed / data.allTask * 100);
+    let value = 0;
+    if (data.allTask !== 0) {
+        value = precise(data.completed / data.allTask * 100);
+    }
 
     const navigate = useNavigate();
 
@@ -98,7 +101,7 @@ const DefaultKPICard = ({ data }) => {
                     fontSize="24px"
                     textTransform="none"
                 >
-                    Đã xong: {`${data.completed}/${data.allTask}`}
+                    Đã xong: {data.allTask === 0 ?  '0/0' : `${data.completed}/${data.allTask}`}
                 </Typography>
 
                 <Tooltip title={<h5>Nhấn để xem chi tiết KPI</h5>} sx={{ marginTop: "3%", marginBottom: "3%" }}>
