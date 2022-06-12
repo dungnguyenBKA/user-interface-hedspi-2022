@@ -23,7 +23,7 @@ const style = {
     borderRadius: "10px",
 };
 
-const NewForm = ({ open,title,titleName,titleList,tittleButton, onChangeKPIForm }) => {
+const NewForm = ({ open,title,titleName,titleList,tittleButton, onChangeKPIForm,onAdd }) => {
     const [age, setAge] = React.useState('');
 
     const handleChange = (event) => {
@@ -119,6 +119,7 @@ const NewForm = ({ open,title,titleName,titleList,tittleButton, onChangeKPIForm 
                         height: "10%",
                         fontSize: "18px"
                     }}
+                    onClick={onAdd}
                 >
                     {tittleButton}
                 </Button>

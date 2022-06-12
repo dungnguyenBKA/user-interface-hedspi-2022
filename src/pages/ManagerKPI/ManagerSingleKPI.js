@@ -6,7 +6,12 @@ import "react-circular-progressbar/dist/styles.css";
 import { KPIMockData, jobDataRows } from './KPIMockData';
 import JobTable from '../../components/KPITable/JobTable';
 import NewForm from '../../components/Form/NewForm';
+import useStorage from './useStorage';
 const ManagerSingleKPI = () => {
+    const [KPIData, putKPIData, clearKPIData] = useStorage();
+    const onAddNewKPI = (newKPI) => {
+        putKPIData([...KPIData, newKPI]);
+    }
     const [open, setOpen] = useState(false);
     const onChangeKPIForm = () => setOpen(!open);
     const { id } = useParams(); //must be the same as in route in App.tsx
@@ -197,7 +202,7 @@ const ManagerSingleKPI = () => {
                 >
                    Thêm công việc mới
                 </Button>
-                <NewForm open={open} title="Nhập thông tin về công việc mới" titleList="Danh sách công nhân" tittleButton="Thêm công việc" titleName="Tên công việc" onChangeKPIForm={onChangeKPIForm}/>
+                <NewForm open={open} title="Nhập thông tin về công việc mới" titleList="Danh sách công nhân" tittleButton="Thêm công việc" titleName="Tên công việc" onChangeKPIForm={onChangeKPIForm} onAdd={onAddNewKPI}/>
             </Box>
 
 
