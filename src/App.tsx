@@ -24,8 +24,10 @@ function App() {
     <Routes>
       <Route path="/" element={wrapWithLoginRequire(<Home />)} />
 
-      <Route path="/work-submit" element={wrapWithLoginRequire(<WorkSubmitted />)} />
-      <Route path="/foreman" element={wrapWithLoginRequire(<Foreman />)} />
+
+      <Route path="/work-submit" element={wrapWithLoginRequire(<WorkSubmitted/>)}><Route path=":workSubmitId" element={<WorkSubmitted />} /></Route>
+      <Route path="/foreman" element={wrapWithLoginRequire(<Foreman/>)}></Route>
+
 
       <Route path='contractor-KPI'>
         <Route index element={wrapWithLoginRequire(<ContractorsKPI />)} />
