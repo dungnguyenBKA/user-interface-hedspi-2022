@@ -3,6 +3,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import './foreman.css';
 import {Link} from 'react-router-dom';
 import useWork from "../../hooks/useWork";
+import Footer from "../../components/Footer/footer";
 
 function Foreman() {
 
@@ -45,6 +46,7 @@ function Foreman() {
           </tbody>
         </table>
       </div>
+      <Footer/>
     </div>
   )
 }

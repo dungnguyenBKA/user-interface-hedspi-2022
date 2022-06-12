@@ -4,7 +4,7 @@ import { Card, Typography, Tooltip } from "@mui/material";
 import NewKPIForm from '../Form/NewKPIForm';
 import { IconButton } from '@mui/material';
 
-const AddKPICard = () => {
+const AddKPICard = ({ onAddNewKPI }) => {
 
     const [open, setOpen] = useState(false);
     const onChangeKPIForm = () => setOpen(!open);
@@ -25,13 +25,13 @@ const AddKPICard = () => {
             }}
         >
             <Tooltip
-                title={<h2>Nhấn để thêm KPI mới</h2>}
+                title={<h5>Nhấn để thêm KPI mới</h5>}
                 sx={{
                     marginTop: "60%"
                 }}
             >
                 <IconButton onClick={onChangeKPIForm}>
-                    <AddCircleOutlineIcon fontSize='large'/>
+                    <AddCircleOutlineIcon fontSize='large' />
                 </IconButton>
             </Tooltip>
 
@@ -47,7 +47,12 @@ const AddKPICard = () => {
             >
                 Thêm KPI
             </Typography>
-            <NewKPIForm open={open} onChangeKPIForm={onChangeKPIForm}/>
+            <NewKPIForm
+                open={open}
+                onChangeKPIForm={onChangeKPIForm}
+                onAddNewKPI={onAddNewKPI}
+                setOpen={setOpen}
+            />
         </Card>
     )
 }
