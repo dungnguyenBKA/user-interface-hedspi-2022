@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Box, Typography, Button } from "@mui/material";
 import { CircularProgressbar } from "react-circular-progressbar";
@@ -7,6 +7,7 @@ import { KPIMockData, jobDataRows } from './KPIMockData';
 import JobTable from '../../components/KPITable/JobTable';
 import NewForm from '../../components/Form/NewForm';
 import useStorage from './useStorage';
+import NavBar from '../../components/NavBar/NavBar';
 const ManagerSingleKPI = () => {
     const [KPIData, putKPIData, clearKPIData] = useStorage();
     const onAddNewKPI = (newKPI) => {
@@ -30,47 +31,49 @@ const ManagerSingleKPI = () => {
     const dataRows = jobDataRows.filter(element => element.id === convertedId);
 
     return (
-        <Box
-            sx={{
-                display: "flex",
-                flexDirection: "column",
-                backgroundColor: "white",
-                boxShadow: "none",
-                overflow: "visible",
-            }}
-        >
-
-            <Typography
-                sx={{
-                    fontSize: "30px",
-                    textAlign: "center",
-                    marginTop: "30px"
-                }}
-            >
-                DỰ ÁN LẮP ĐẶT HỆ THỐNG ĐIỆN CHO VINCOM HAI BÀ TRƯNG
-            </Typography>
-
-            <Typography
-                fontWeight="bold"
-                sx={{
-                    fontSize: "30px",
-                    textAlign: "center",
-                    marginTop: "20px",
-                    color: 'dodgerblue'
-                }}
-            >
-                KPI: {singleKPI.name}
-            </Typography>
-
+        <>
+            <NavBar />
             <Box
                 sx={{
                     display: "flex",
-                    alignItem: "center",
-                    justifyContent: "center",
-                    marginTop: "17.5px",
+                    flexDirection: "column",
+                    backgroundColor: "white",
+                    boxShadow: "none",
+                    overflow: "visible",
                 }}
             >
-                {/* <Button
+
+                <Typography
+                    sx={{
+                        fontSize: "30px",
+                        textAlign: "center",
+                        marginTop: "30px"
+                    }}
+                >
+                    DỰ ÁN LẮP ĐẶT HỆ THỐNG ĐIỆN CHO VINCOM HAI BÀ TRƯNG
+                </Typography>
+
+                <Typography
+                    fontWeight="bold"
+                    sx={{
+                        fontSize: "30px",
+                        textAlign: "center",
+                        marginTop: "20px",
+                        color: 'dodgerblue'
+                    }}
+                >
+                    KPI: {singleKPI.name}
+                </Typography>
+
+                <Box
+                    sx={{
+                        display: "flex",
+                        alignItem: "center",
+                        justifyContent: "center",
+                        marginTop: "17.5px",
+                    }}
+                >
+                    {/* <Button
                     variant='contained'
                     color='success'
                     sx={{
@@ -80,134 +83,135 @@ const ManagerSingleKPI = () => {
                 >
                     Chỉnh sửa KPI
                 </Button> */}
-            </Box>
+                </Box>
 
-            {/* Box has 2 element in a row 40-60 */}
-            <Box
-                sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    // alignItems: "center",
-                }}
-            >
-                {/* Box1: Circle Progress  */}
+                {/* Box has 2 element in a row 40-60 */}
                 <Box
                     sx={{
                         display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        marginLeft: "3%",
-                        marginRight: "5%",
-                        flex: 4,
+                        flexDirection: "row",
+                        // alignItems: "center",
                     }}
                 >
+                    {/* Box1: Circle Progress  */}
                     <Box
                         sx={{
                             display: "flex",
                             flexDirection: "column",
                             alignItems: "center",
                             justifyContent: "center",
-                            width: "65%",
-                            height: "65%",
-                            marginBottom: "10px",
+                            marginLeft: "3%",
+                            marginRight: "5%",
+                            flex: 4,
+                            boxShadow: 7,
+                            borderRadius: "15%"
                         }}
                     >
-                        <CircularProgressbar
-                            value={value}
-                            text={`${value}%`}
-                            strokeWidth={10}
-                        />
+                        <Box
+                            sx={{
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                width: "65%",
+                                height: "65%",
+                                marginBottom: "10px",
+                            }}
+                        >
+                            <CircularProgressbar
+                                value={value}
+                                text={`${value}%`}
+                                strokeWidth={10}
+                            />
+                        </Box>
+
+                        <Typography
+                            variant='button'
+                            fontWeight="bold"
+                            color="dodgerblue"
+                            textTransform="none"
+                            fontSize="22.5px"
+                            sx={{
+                                marginBottom: "5%",
+                                textAlign: "center"
+                            }}
+                        >
+                            Số công việc hoàn thành: {`${singleKPI.completed} / ${singleKPI.allTask}`}
+                        </Typography>
                     </Box>
 
-                    <Typography
-                        variant='button'
-                        fontWeight="bold"
-                        color="dodgerblue"
-                        textTransform="none"
-                        fontSize="22.5px"
+                    {/* Box2: 2 Typography */}
+                    <Box
                         sx={{
-                            marginBottom: "5%",
-                            textAlign: "center"
+                            flex: 6,
+                            display: "flex",
+                            flexDirection: "column",
+                            marginTop: "7%",
                         }}
                     >
-                        Số công việc hoàn thành: {`${singleKPI.completed} / ${singleKPI.allTask}`}
-                    </Typography>
+                        <Typography
+                            variant='button'
+                            fontWeight="bold"
+                            color="red"
+                            textTransform="none"
+                            fontSize="25.5px"
+                            sx={{
+                                marginBottom: "5%"
+                            }}
+                        >
+                            Hạn chót hoàn thành KPI: {singleKPI.deadline}
+                        </Typography>
+
+                        <Typography
+                            variant='button'
+                            fontWeight="bold"
+                            color="text"
+                            textTransform="none"
+                            fontSize="25.5px"
+                        >
+                            Quản đốc phụ trách: {singleKPI.manager}
+                        </Typography>
+                    </Box>
                 </Box>
 
-                {/* Box2: 2 Typography */}
                 <Box
                     sx={{
-                        flex: 6,
                         display: "flex",
                         flexDirection: "column",
-                        marginTop: "7%",
+                        alignItems: "center",
                     }}
                 >
                     <Typography
-                        variant='button'
                         fontWeight="bold"
-                        color="red"
-                        textTransform="none"
-                        fontSize="25.5px"
                         sx={{
-                            marginBottom: "5%"
+                            fontSize: "28.5px",
+                            textAlign: "center",
+                            marginTop: "10px"
                         }}
                     >
-                        Hạn chót: {singleKPI.deadline}
+                        Danh sách công việc
                     </Typography>
 
-                    <Typography
-                        variant='button'
-                        fontWeight="bold"
-                        color="text"
-                        textTransform="none"
-                        fontSize="25.5px"
+                    {/* Table */}
+                    <JobTable rows={dataRows} />
+
+                    <Button
+                        variant="contained"
+                        color="success"
+                        sx={{
+                            marginTop: "20px",
+                            marginBottom: "20px",
+                            fontSize: "20px"
+                        }}
+                        onClick={onChangeKPIForm}
                     >
-                        Quản đốc phụ trách: {singleKPI.manager}
-                    </Typography>
+                        Thêm công việc mới
+                    </Button>
+                    <NewForm open={open} title="Nhập thông tin về công việc mới" titleList="Danh sách công nhân" tittleButton="Thêm công việc" titleName="Tên công việc" onChangeKPIForm={onChangeKPIForm} onAdd={onAddNewKPI} />
                 </Box>
+
             </Box>
-
-            <Box
-                sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                }}
-            >
-                <Typography
-                    fontWeight="bold"
-                    sx={{
-                        fontSize: "28.5px",
-                        textAlign: "center",
-                        // marginTop: "20px"
-                    }}
-                >
-                    Danh sách công việc
-                </Typography>
-
-                {/* Table */}
-                <JobTable rows={dataRows} />
-
-                <Button
-                    variant="contained"
-                    color="error"
-                    sx={{
-                        marginTop: "20px",
-                        marginBottom: "20px",
-                        fontSize: "20px"
-                    }}
-                    onClick={onChangeKPIForm}
-                >
-                   Thêm công việc mới
-                </Button>
-                <NewForm open={open} title="Nhập thông tin về công việc mới" titleList="Danh sách công nhân" tittleButton="Thêm công việc" titleName="Tên công việc" onChangeKPIForm={onChangeKPIForm} onAdd={onAddNewKPI}/>
-            </Box>
-
-
-
-        </Box>
+        </>
     );
 }
 

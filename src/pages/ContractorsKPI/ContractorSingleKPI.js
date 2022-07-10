@@ -15,6 +15,7 @@ import { KPIMockData, jobDataRows } from './KPIMockData';
 import JobTable from '../../components/KPITable/JobTable';
 import useStorage from './useStorage';
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../../components/NavBar/NavBar';
 
 const style = {
     display: "flex",
@@ -93,300 +94,314 @@ const ContractorSingleKPI = () => {
     const [deadline, setDeadline] = useState(null);
 
     return (
-        <Box
-            sx={{
-                display: "flex",
-                flexDirection: "column",
-                backgroundColor: "white",
-                boxShadow: "none",
-                overflow: "visible",
-            }}
-        >
-
-            <Typography
-                sx={{
-                    fontSize: "30px",
-                    textAlign: "center",
-                    marginTop: "30px"
-                }}
-            >
-                DỰ ÁN LẮP ĐẶT HỆ THỐNG ĐIỆN CHO VINCOM HAI BÀ TRƯNG
-            </Typography>
-
-            <Typography
-                fontWeight="bold"
-                sx={{
-                    fontSize: "30px",
-                    textAlign: "center",
-                    marginTop: "20px",
-                    color: 'dodgerblue'
-                }}
-            >
-                KPI: {singleKPI.name}
-            </Typography>
-
+        <>
+            <NavBar />
             <Box
                 sx={{
                     display: "flex",
-                    alignItem: "center",
-                    justifyContent: "center",
-                    marginTop: "17.5px",
+                    flexDirection: "column",
+                    backgroundColor: "white",
+                    boxShadow: "none",
+                    overflow: "visible",
                 }}
             >
-                <Button
-                    variant='contained'
-                    color='success'
-                    onClick={onChangeUpdateOpen}
+
+                <Typography
                     sx={{
-                        width: '15%',
-                        fontSize: "20px"
+                        fontSize: "30px",
+                        textAlign: "center",
+                        marginTop: "30px"
                     }}
                 >
-                    Chỉnh sửa KPI
-                </Button>
-            </Box>
+                    DỰ ÁN LẮP ĐẶT HỆ THỐNG ĐIỆN CHO VINCOM HAI BÀ TRƯNG
+                </Typography>
 
-            {/* Box has 2 element in a row 40-60 */}
-            <Box
-                sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    // alignItems: "center",
-                }}
-            >
-                {/* Box1: Circle Progress  */}
+                <Typography
+                    fontWeight="bold"
+                    sx={{
+                        fontSize: "30px",
+                        textAlign: "center",
+                        marginTop: "20px",
+                        color: 'dodgerblue'
+                    }}
+                >
+                    KPI: {singleKPI.name}
+                </Typography>
+
                 <Box
                     sx={{
                         display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
+                        alignItem: "center",
                         justifyContent: "center",
-                        marginLeft: "3%",
-                        marginRight: "5%",
-                        flex: 4,
+                        marginTop: "17.5px",
                     }}
                 >
+                    <Button
+                        variant='contained'
+                        color='success'
+                        onClick={onChangeUpdateOpen}
+                        sx={{
+                            width: '15%',
+                            fontSize: "20px"
+                        }}
+                    >
+                        Chỉnh sửa KPI
+                    </Button>
+                </Box>
+
+                {/* Box has 2 element in a row 40-60 */}
+                <Box
+                    sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        // alignItems: "center",
+                    }}
+                >
+                    {/* Box1: Circle Progress  */}
                     <Box
                         sx={{
                             display: "flex",
                             flexDirection: "column",
                             alignItems: "center",
                             justifyContent: "center",
-                            width: "65%",
-                            height: "65%",
-                            marginBottom: "10px",
+                            marginLeft: "3%",
+                            marginRight: "5%",
+                            flex: 4,
+                            boxShadow: 7,
+                            borderRadius: "15%"
                         }}
                     >
-                        <CircularProgressbar
-                            value={value}
-                            text={`${value}%`}
-                            strokeWidth={10}
-                        />
+                        <Box
+                            sx={{
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                width: "65%",
+                                height: "65%",
+                                marginBottom: "10px",
+                            }}
+                        >
+                            <CircularProgressbar
+                                value={value}
+                                text={`${value}%`}
+                                strokeWidth={10}
+                            />
+                        </Box>
+
+                        <Typography
+                            variant='button'
+                            fontWeight="bold"
+                            color="dodgerblue"
+                            textTransform="none"
+                            fontSize="22.5px"
+                            sx={{
+                                marginBottom: "5%",
+                                textAlign: "center"
+                            }}
+                        >
+                            Số công việc hoàn thành: {`${singleKPI.completed} / ${singleKPI.allTask}`}
+                        </Typography>
                     </Box>
 
-                    <Typography
-                        variant='button'
-                        fontWeight="bold"
-                        color="dodgerblue"
-                        textTransform="none"
-                        fontSize="22.5px"
+                    {/* Box2: 2 Typography */}
+                    <Box
                         sx={{
-                            marginBottom: "5%",
-                            textAlign: "center"
+                            flex: 6,
+                            display: "flex",
+                            flexDirection: "column",
+                            marginTop: "7%",
+                            marginLeft: "3%",
+                            marginRight: "5%",
                         }}
                     >
-                        Số công việc hoàn thành: {`${singleKPI.completed} / ${singleKPI.allTask}`}
-                    </Typography>
+                        <Typography
+                            variant='button'
+                            fontWeight="bold"
+                            color="red"
+                            textTransform="none"
+                            fontSize="25.5px"
+                            sx={{
+                                marginBottom: "5%"
+                            }}
+                        >
+                            Hạn chót hoàn thành KPI: {singleKPI.deadline}
+                        </Typography>
+
+                        <Typography
+                            variant='button'
+                            fontWeight="bold"
+                            color="text"
+                            textTransform="none"
+                            fontSize="25.5px"
+                        >
+                            Quản đốc phụ trách: {singleKPI.manager}
+                        </Typography>
+                    </Box>
                 </Box>
 
-                {/* Box2: 2 Typography */}
                 <Box
                     sx={{
-                        flex: 6,
                         display: "flex",
                         flexDirection: "column",
-                        marginTop: "7%",
+                        alignItems: "center",
                     }}
                 >
                     <Typography
-                        variant='button'
                         fontWeight="bold"
-                        color="red"
-                        textTransform="none"
-                        fontSize="25.5px"
                         sx={{
-                            marginBottom: "5%"
+                            fontSize: "28.5px",
+                            textAlign: "center",
+                            marginTop: "10px"
                         }}
                     >
-                        Hạn chót: {singleKPI.deadline}
+                        Danh sách công việc
                     </Typography>
 
-                    <Typography
-                        variant='button'
-                        fontWeight="bold"
-                        color="text"
-                        textTransform="none"
-                        fontSize="25.5px"
+                    {/* Table */}
+                    <Box
+                        sx={{
+                            boxShadow: 7,
+                            width: "90%",
+                        }}
                     >
-                        Quản đốc phụ trách: {singleKPI.manager}
-                    </Typography>
-                </Box>
-            </Box>
-
-            <Box
-                sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                }}
-            >
-                <Typography
-                    fontWeight="bold"
-                    sx={{
-                        fontSize: "28.5px",
-                        textAlign: "center",
-                        // marginTop: "20px"
-                    }}
-                >
-                    Danh sách công việc
-                </Typography>
-
-                {/* Table */}
-                <JobTable rows={dataRows} />
-
-                <Button
-                    variant="contained"
-                    onClick={onChangeDeleteOpen}
-                    color="error"
-                    sx={{
-                        marginTop: "20px",
-                        marginBottom: "20px",
-                        fontSize: "20px",
-                        width: '10%',
-                    }}
-                >
-                    Xóa KPI
-                </Button>
-            </Box>
-
-            <Modal
-                open={deleteOpen}
-                onClose={onChangeDeleteOpen}
-            >
-                <Box sx={style}>
-                    <Typography
-                        fontWeight="bold"
-                        color="text"
-                        textTransform="none"
-                        fontSize="20px"
-                    >
-                        Bạn có chắc là muốn xóa KPI không ?
-                    </Typography>
+                        <JobTable rows={dataRows} />
+                    </Box>
 
                     <Button
                         variant="contained"
+                        onClick={onChangeDeleteOpen}
                         color="error"
-                        sx={{ width: "15%", marginTop: "5%" }}
-                        onClick={onDeleteKPI}
+                        sx={{
+                            marginTop: "20px",
+                            marginBottom: "20px",
+                            fontSize: "20px",
+                            width: '10%',
+                        }}
                     >
-                        Xóa
+                        Xóa KPI
                     </Button>
                 </Box>
-            </Modal>
 
-            <Modal
-                open={updateOpen}
-                onClose={onChangeUpdateOpen}
-            >
-                <Box sx={styleUpdate}>
-                    <Box
-                        sx={{
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                            marginTop: "5%"
-                        }}
-                    >
-                        <Typography sx={{ fontWeight: "bold", flex: 5, fontSize: "20px" }}>Tên KPI</Typography>
-                        <TextField
-                            id="outlined-password-input"
-                            label="Tên KPI"
-                            type="text"
-                            sx={{ width: "70%" }}
-                            defaultValue={singleKPI.name}
-                            value={updatedKPI.name}
-                            name="name"
-                            onChange={onHandleUpdateChange}
-                        />
+                <Modal
+                    open={deleteOpen}
+                    onClose={onChangeDeleteOpen}
+                >
+                    <Box sx={style}>
+                        <Typography
+                            fontWeight="bold"
+                            color="text"
+                            textTransform="none"
+                            fontSize="20px"
+                        >
+                            Bạn có chắc là muốn xóa KPI không ?
+                        </Typography>
+
+                        <Button
+                            variant="contained"
+                            color="error"
+                            sx={{ width: "15%", marginTop: "5%" }}
+                            onClick={onDeleteKPI}
+                        >
+                            Xóa
+                        </Button>
                     </Box>
+                </Modal>
 
-                    <Box
-                        sx={{
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                            marginTop: "5%"
-                        }}
-                    >
-                        <Typography sx={{ fontWeight: "bold", flex: 5, fontSize: "20px" }}>Hạn chót</Typography>
-                        <TextField
-                            id="outlined-password-input"
-                            label="Ngày hạn chót"
-                            type="text"
-                            defaultValue={singleKPI.deadline}
-                            // autoComplete="current-password"
-                            sx={{ width: "70%" }}
-                            value={updatedKPI.deadline}
-                            name="deadline"
-                            onChange={onHandleUpdateChange}
-                        />
-                    </Box>
-
-                    <Box
-                        sx={{
-                            display: "flex",
-                            flexDirection: "row",
-                            alignItems: "center",
-                            marginTop: "5%"
-                        }}
-                    >
-                        <Typography sx={{ fontWeight: "bold", flex: 5, fontSize: "20px" }}>Giao việc cho </Typography>
-                        <Box sx={{ width: "70%" }}>
-                            <FormControl fullWidth>
-                                <InputLabel id="demo-simple-select-label">Danh sách quản đốc</InputLabel>
-                                <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
-                                    defaultValue={singleKPI.manager}
-                                    value={updatedKPI.manager}
-                                    name="manager"
-                                    // label="Danh sách quản đốc"
-                                    onChange={onHandleUpdateChange}
-                                >
-                                    <MenuItem value={'Nguyễn Min Dũn'}>Nguyễn Min Dũn</MenuItem>
-                                    <MenuItem value={'Nguyễn Gia Thanh'}>Nguyễn Gia Thanh</MenuItem>
-                                    <MenuItem value={'Nguyễn Viết Huy'}>Nguyễn Viết Huy</MenuItem>
-                                </Select>
-                            </FormControl>
+                <Modal
+                    open={updateOpen}
+                    onClose={onChangeUpdateOpen}
+                >
+                    <Box sx={styleUpdate}>
+                        <Box
+                            sx={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                marginTop: "5%"
+                            }}
+                        >
+                            <Typography sx={{ fontWeight: "bold", flex: 5, fontSize: "20px" }}>Tên KPI</Typography>
+                            <TextField
+                                id="outlined-password-input"
+                                label="Tên KPI"
+                                type="text"
+                                sx={{ width: "70%" }}
+                                defaultValue={singleKPI.name}
+                                value={updatedKPI.name}
+                                name="name"
+                                onChange={onHandleUpdateChange}
+                            />
                         </Box>
-                    </Box>
-                    <Button
-                        onClick={onUpdateKPI}
-                        variant="contained"
-                        color="success"
-                        sx={{
-                            width: "30%",
-                            marginTop: "10%",
-                            marginLeft: "35%",
-                            fontSize: "18.5px"
-                        }}
-                    >
-                        Cập nhật
-                    </Button>
-                </Box>
-            </Modal>
 
-        </Box>
+                        <Box
+                            sx={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                marginTop: "5%"
+                            }}
+                        >
+                            <Typography sx={{ fontWeight: "bold", flex: 5, fontSize: "20px" }}>Hạn chót</Typography>
+                            <TextField
+                                id="outlined-password-input"
+                                label="Ngày hạn chót"
+                                type="text"
+                                defaultValue={singleKPI.deadline}
+                                // autoComplete="current-password"
+                                sx={{ width: "70%" }}
+                                value={updatedKPI.deadline}
+                                name="deadline"
+                                onChange={onHandleUpdateChange}
+                            />
+                        </Box>
+
+                        <Box
+                            sx={{
+                                display: "flex",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                marginTop: "5%"
+                            }}
+                        >
+                            <Typography sx={{ fontWeight: "bold", flex: 5, fontSize: "20px" }}>Giao việc cho </Typography>
+                            <Box sx={{ width: "70%" }}>
+                                <FormControl fullWidth>
+                                    <InputLabel id="demo-simple-select-label">Danh sách quản đốc</InputLabel>
+                                    <Select
+                                        labelId="demo-simple-select-label"
+                                        id="demo-simple-select"
+                                        defaultValue={singleKPI.manager}
+                                        value={updatedKPI.manager}
+                                        name="manager"
+                                        // label="Danh sách quản đốc"
+                                        onChange={onHandleUpdateChange}
+                                    >
+                                        <MenuItem value={'Nguyễn Min Dũn'}>Nguyễn Min Dũn</MenuItem>
+                                        <MenuItem value={'Nguyễn Gia Thanh'}>Nguyễn Gia Thanh</MenuItem>
+                                        <MenuItem value={'Nguyễn Viết Huy'}>Nguyễn Viết Huy</MenuItem>
+                                    </Select>
+                                </FormControl>
+                            </Box>
+                        </Box>
+                        <Button
+                            onClick={onUpdateKPI}
+                            variant="contained"
+                            color="success"
+                            sx={{
+                                width: "30%",
+                                marginTop: "10%",
+                                marginLeft: "35%",
+                                fontSize: "18.5px"
+                            }}
+                        >
+                            Cập nhật
+                        </Button>
+                    </Box>
+                </Modal>
+
+            </Box>
+        </>
     );
 }
 

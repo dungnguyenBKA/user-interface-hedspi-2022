@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css"
 
-const DefaultKPICard = ({data}) => {
+const DefaultKPICard = ({ data }) => {
     const precise = (x) => {
         return x.toPrecision(4);
     }
@@ -36,7 +36,16 @@ const DefaultKPICard = ({data}) => {
             }}
         >
 
-            <Box mt={1} mx={0.5} sx={{ textAlign: "center", flex: 2.5 }}>
+            <Box
+                mt={1}
+                mx={0.5}
+                sx={{
+                    textAlign: "center",
+                    flex: 2.5,
+                    display: "flex",
+                    flexDirection: "column"
+                }}
+            >
                 <Typography
                     variant='button'
                     fontWeight="bold"
@@ -45,6 +54,16 @@ const DefaultKPICard = ({data}) => {
                     fontSize="20px"
                 >
                     {data.name}
+                </Typography>
+
+                <Typography
+                    variant='button'
+                    fontWeight="bold"
+                    color="green"
+                    fontSize="17.5px"
+                    textTransform="none"
+                >
+                    Đốc công: {data.leader}
                 </Typography>
             </Box>
 
@@ -59,11 +78,16 @@ const DefaultKPICard = ({data}) => {
 
             </Box>
 
-            <Box position="relative" width="70%" height="70%"
+            <Box
+                position="relative"
+                width="70%"
+                height="70%"
                 shadow="xl"
                 borderRadius="xl"
                 mt="10px"
-                sx={{ flex: 5 }}
+                sx={{
+                    flex: 5,
+                }}
             >
                 <CircularProgressbar
                     value={value}
@@ -93,7 +117,7 @@ const DefaultKPICard = ({data}) => {
                 >
                     Đã xong: {`${data.completed}/${data.allTask}`}
                 </Typography>
-                <h3>Đốc công: {data.leader}</h3>
+
                 <Tooltip title={<h3>Nhấn để xem chi tiết</h3>} sx={{ marginTop: "3%", marginBottom: "3%" }}>
                     <Button variant='contained' color='info' onClick={navigateToKPI}>
                         Xem chi tiết

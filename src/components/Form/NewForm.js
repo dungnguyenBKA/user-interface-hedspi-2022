@@ -14,8 +14,8 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 500,
-    height: 375,
+    width: 550,
+    height: 400,
     bgcolor: 'background.paper',
     border: 1,
     boxShadow: 24,
@@ -112,10 +112,10 @@ const NewForm = ({ open,title,titleName,titleList,tittleButton, onChangeKPIForm,
                     variant='contained'
                     color='success'
                     sx={{
-                        marginLeft: "35%",
+                        marginLeft: "25%",
                         marginTop: "7.5%",
                         marginBottom: "5%",
-                        width: "40%",
+                        width: "50%",
                         height: "10%",
                         fontSize: "18px"
                     }}

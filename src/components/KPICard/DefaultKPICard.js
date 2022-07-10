@@ -61,7 +61,7 @@ const DefaultKPICard = ({ data }) => {
                     flex: 1
                 }}
             >
-                <Typography variant='button' fontWeight="regular" color="red" textTransform="none" fontSize="15px">
+                <Typography variant='button' fontWeight="regular" color="red" textTransform="none" fontSize="17.5px">
                     Hạn bàn giao: {data.deadline}
                 </Typography>
             </Box>

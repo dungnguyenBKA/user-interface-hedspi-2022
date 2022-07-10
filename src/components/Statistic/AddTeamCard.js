@@ -45,7 +45,7 @@ const AddTeamCard = () => {
                     marginBottom: "60%"
                 }}
             >
-                Tạo nhóm mới
+                Tạo team mới
             </Typography>
             <NewAddTeamForm open={open} onChangeKPIForm={onChangeKPIForm}/>
         </Card>
