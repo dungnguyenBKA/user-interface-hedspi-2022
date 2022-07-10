@@ -1,10 +1,9 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import './navbar.css';
 import useAuth from "../../hooks/useAuth";
-
 const NavBar = () => {
-  const {signOut, user} = useAuth()
+  const { signOut, user } = useAuth()
   return (
     <nav className='navbar'>
       <div className='container-fluid'>
@@ -16,16 +15,26 @@ const NavBar = () => {
           />
         </Link>
         <Link className='link' to='/'>Trang chủ</Link>
-        <Link className='link' to='/manager-KPI'>Quản lý KPI quản đốc</Link>
-        <Link className='link' to='/contractor-KPI'>Quản lý KPI nhà thầu</Link>
-        <Link className='link' to='/foreman'>Quản lý công việc</Link>
+
+        {user.role === "manager" ? <>
+          <Link className='link' to='/manager-KPI'>Quản lý KPI quản đốc</Link>
+          <Link className='link' to='/foreman'>Quản lý công việc</Link>
+        </> : <></>
+        }
+
+        {user.role === "contractor" ? <>
+          <Link className='link' to='/contractor-KPI'>Quản lý KPI nhà thầu</Link>
+        </> : <></>
+        }
+
         <Link className='link' to='/statistic'>Báo cáo thống kê</Link>
-        <Link className='link' to='/'>Liên hệ</Link>
-        <p>Hello, {user?.username}</p>
+    
+        <p>Chào mừng, {user?.username}</p>
+        {/* <button type="button" className="btn btn-light">Chào mừng, {user?.username}</button> */}
         <button type="button" className="btn btn-light" onClick={() => {
           signOut()
         }}>
-          Sign Out
+          Đăng xuất
         </button>
       </div>
     </nav>)

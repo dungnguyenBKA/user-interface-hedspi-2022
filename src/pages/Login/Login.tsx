@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
-import {Button, TextField} from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import Column from "../../components/Column/Column";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import AppText from "../../components/AppText/AppText";
 
 const Login: React.FC = () => {
-  const {signIn} = useAuth()
-  const {width, height} = useWindowDimensions()
+  const { signIn } = useAuth()
+  const { width, height } = useWindowDimensions()
   const [username, setUsername] = useState('')
   const [pwd, setPwd] = useState('')
   const [isValid, setValid] = useState(false)
@@ -37,7 +37,7 @@ const Login: React.FC = () => {
       }}
       placeholder={""}
       variant={"filled"}
-      label={"Username"}/>
+      label={"Username"} />
     <TextField
       style={{
         width: 500,
@@ -51,7 +51,7 @@ const Login: React.FC = () => {
       type={"password"}
       placeholder={""}
       variant={"filled"}
-      label={"Password"}/>
+      label={"Password"} />
     <Button
       style={{
         width: 500,
@@ -60,9 +60,10 @@ const Login: React.FC = () => {
       }}
       onClick={() => {
         signIn({
-            username,
-            pwd
-          },
+          username,
+          pwd,
+          role: "manager"
+        },
           "fake_token"
         )
       }}
@@ -70,20 +71,41 @@ const Login: React.FC = () => {
       variant="outlined">
       Login
     </Button>
+
     <Button
       style={{
         width: 500,
-        marginTop: 8,
+        marginTop: 20,
       }}
       variant="outlined"
       onClick={() => {
         signIn({
-            username: "dungnguyenBKA",
-            pwd: ""
-          },
+          username: "Nhà thầu (test)",
+          pwd: "",
+          role: "contractor"
+        },
           "fake_token"
         )
-      }}>Login with user test: DungnguyenBKA
+      }}>
+        Đăng nhập với vai trò nhà thầu (test)
+    </Button>
+
+    <Button
+      style={{
+        width: 500,
+        marginTop: 15,
+      }}
+      variant="outlined"
+      onClick={() => {
+        signIn({
+          username: "Quản lý/Đốc công (Test)",
+          pwd: "",
+          role: "manager"
+        },
+          "fake_token"
+        )
+      }}>
+        Đăng nhập với vai trò quản lý / đốc công (test)
     </Button>
 
   </Column>

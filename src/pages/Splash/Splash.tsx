@@ -34,3 +34,4 @@ const Splash: React.FC = () => {
 }
 
 export default Splash
+

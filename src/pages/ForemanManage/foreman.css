@@ -32,12 +32,12 @@
     text-decoration: none;
 }
 .link-content:hover{
-    text-shadow: 0.1em 0.1em 0.3em var(--bs-dark);
-    color: black;
+    text-shadow: 0.1em 0.1em 0.3em var(--bs-light);
+    color: green;
 }
 .link-content:active{
     color: black;
-    text-shadow: 0.2em 0.2em 0.3em var(--bs-light);
+    text-shadow: 0.2em 0.2em 0.3em var(--bs-dark);
     transform: translateX(20px);
     transition: 0.2s;
 }
