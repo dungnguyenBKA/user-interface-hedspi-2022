@@ -58,7 +58,7 @@ const ManagerKPICard = ({ data }) => {
                     flex: 1
                 }}
             >
-                <Typography variant='button' fontWeight="regular" color="red" textTransform="none" fontSize="15px">
+                <Typography variant='button' fontWeight="regular" color="red" textTransform="none" fontSize="18px">
                     Hạn bàn giao: {data.deadline}
                 </Typography>
             </Box>
@@ -71,7 +71,9 @@ const ManagerKPICard = ({ data }) => {
                 shadow="xl"
                 borderRadius="xl"
                 mt="10px"
-                sx={{ flex: 5 }}
+                sx={{
+                    flex: 5,
+                }}
             >
                 <CircularProgressbar
                     value={value}
