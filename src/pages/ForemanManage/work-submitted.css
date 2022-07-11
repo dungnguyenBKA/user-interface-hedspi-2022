@@ -13,9 +13,8 @@
     padding-bottom: 5px;
     padding-left: 125px;
 }
-.submitted >.work-submitted >.submitted-img >#submitted-image {
-    border: 1px black solid;
-    height: 400px;
+#submitted-image {
+    height: 100px;
 }
 .submitted >.work-submitted >.submitted-info{
     padding-top: 50px;
