@@ -4,7 +4,7 @@ import { Box, Typography, Button } from "@mui/material";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import "./style.css"
-import { workers } from './StatisticMockData';
+import { teams, workers } from './StatisticMockData';
 import NavBar from '../../components/NavBar/NavBar';
 
 import Table from '@mui/material/Table';
@@ -24,38 +24,18 @@ import {
     Legend,
     Bar,
 } from 'recharts';
-import Footer from '../../components/Footer/footer';
-
-const data = [
-    {
-        "name": "Nguyen Van A",
-        "Đúng hạn": 4,
-        "Trễ hạn": 1,
-    },
-    {
-        "name": "Nguyen Van B",
-        "Đúng hạn": 2,
-        "Trễ hạn": 0,
-    },
-    {
-        "name": "Nguyen Van C",
-        "Đúng hạn": 2,
-        "Trễ hạn": 1,
-    },
-    {
-        "name": "Nguyen Van D",
-        "Đúng hạn": 3,
-        "Trễ hạn": 0,
-    },
-    {
-        "name": "Nguyen Van E",
-        "Đúng hạn": 5,
-        "Trễ hạn": 0,
-    }
-]
 
 const StatisticDetailTeam = () => {
+
+    const precise = (x) => {
+        return x.toPrecision(4);
+    }
+
     const { id } = useParams(); //must be the same as in route in App.tsx
+    const intId = parseInt(id);
+    const teamData = teams.filter(ele => ele.id === intId)[0];
+    const teamMemberWork = workers.filter(ele => ele.teamId === intId);
+    const value = precise(teamData.completed / teamData.allTask * 100);
 
     return (
         <>
@@ -75,10 +55,11 @@ const StatisticDetailTeam = () => {
                     sx={{
                         fontSize: "40px",
                         textAlign: "center",
-                        marginTop: "30px"
+                        marginTop: "30px",
+                        fontWeight: "bold"
                     }}
                 >
-                    <b>TEAM A</b>
+                    {teamData.name}
                 </Typography>
 
                 <Typography
@@ -92,19 +73,8 @@ const StatisticDetailTeam = () => {
                         textAlign: "right",
                     }}
                 >
-                    Quản đốc phụ trách: Nguyễn Văn A
+                    Quản đốc phụ trách: {teamData.leader}
                 </Typography>
-
-                <Box
-                    sx={{
-                        display: "flex",
-                        alignItem: "center",
-                        justifyContent: "center",
-                    }}
-                >
-
-                </Box>
-
 
                 {/* Box has 2 element in a row 40-60 */}
                 <Box
@@ -140,8 +110,8 @@ const StatisticDetailTeam = () => {
                             }}
                         >
                             <CircularProgressbar
-                                value={75}
-                                text={`${75}%`}
+                                value={value}
+                                text={`${value} %`}
                                 strokeWidth={8}
                             />
                         </Box>
@@ -157,7 +127,7 @@ const StatisticDetailTeam = () => {
                                 textAlign: "center"
                             }}
                         >
-                            Số công việc hoàn thành: {`${24} / ${32}`}
+                            Số công việc hoàn thành: {`${teamData.completed} / ${teamData.allTask}`}
                         </Typography>
                     </Box>
 
@@ -192,13 +162,13 @@ const StatisticDetailTeam = () => {
                                 textAlign: "center",
                             }}
                         >
-                            <i>(số liệu ngày 20/7/2022)</i>
+                            <i>(số liệu tháng 7/2022)</i>
                         </Typography>
 
                         <BarChart
                             width={750}
                             height={300}
-                            data={data}
+                            data={teamMemberWork}
                             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
                         >
                             <CartesianGrid strokeDasharray="3 3" />
@@ -249,7 +219,7 @@ const StatisticDetailTeam = () => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {workers.map(worker => (
+                                {teamMemberWork.map(worker => (
                                     <TableRow
                                         key={worker.id}
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
