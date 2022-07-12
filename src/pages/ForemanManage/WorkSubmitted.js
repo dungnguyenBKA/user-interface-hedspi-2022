@@ -24,7 +24,7 @@ export function WorkSubmitted() {
   console.log({ work })
 
   const submitted = [{
-    imageSrc: "https://scontent.fhan2-3.fna.fbcdn.net/v/t1.6435-9/204173775_1735354279993790_2419304328112645580_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=174925&_nc_ohc=TDwmDyxZw0oAX-8cFPM&_nc_ht=scontent.fhan2-3.fna&oh=00_AT_HqV156Xz1eOPebaSL-1NGpDbfDy-eRV8EOKoMYP69rA&oe=62B8894A",
+    imageSrc: "https://photo-cms-plo.zadn.vn/w850/Uploaded/2022/bzivycwk/2022_06_20/p10-anhchinh-2739.jpg",
     idWorker: "20180000",
     workerName: "Nguyễn Minh Dũng",
     foremanName: "Nguyễn Gia Thanh",
@@ -34,7 +34,11 @@ export function WorkSubmitted() {
     workerComments: "Em đã hoàn thành công việc được giao, khắc phục sự cố cầu giao tầng 1 , VINCOM Hai Bà Trưng  ",
   },
   {
+<<<<<<< HEAD
     imageSrc: "https://scontent.fhan2-3.fna.fbcdn.net/v/t1.6435-9/204173775_1735354279993790_2419304328112645580_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=174925&_nc_ohc=TDwmDyxZw0oAX-8cFPM&_nc_ht=scontent.fhan2-3.fna&oh=00_AT_HqV156Xz1eOPebaSL-1NGpDbfDy-eRV8EOKoMYP69rA&oe=62B8894A",
+=======
+    imageSrc: "https://photo-cms-plo.zadn.vn/w850/Uploaded/2022/bzivycwk/2022_06_20/p10-anhchinh-2739.jpg",
+>>>>>>> 1e666ad367b7f48b7264ca6b3f9ffa94a76314dc
     idWorker: "20180001",
     workerName: "Nguyễn Minh Dũn",
     foremanName: "Nguyễn Gia Thanh",
@@ -44,7 +48,11 @@ export function WorkSubmitted() {
     workerComments: "Em đã hoàn thành công việc được giao, lắp đặt thành công 8 đền ở đại sảnh A ",
   },
   {
+<<<<<<< HEAD
     imageSrc: "https://scontent.fhan2-3.fna.fbcdn.net/v/t1.6435-9/204173775_1735354279993790_2419304328112645580_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=174925&_nc_ohc=TDwmDyxZw0oAX-8cFPM&_nc_ht=scontent.fhan2-3.fna&oh=00_AT_HqV156Xz1eOPebaSL-1NGpDbfDy-eRV8EOKoMYP69rA&oe=62B8894A",
+=======
+    imageSrc: "https://photo-cms-plo.zadn.vn/w850/Uploaded/2022/bzivycwk/2022_06_20/p10-anhchinh-2739.jpg",
+>>>>>>> 1e666ad367b7f48b7264ca6b3f9ffa94a76314dc
     idWorker: "20180002",
     workerName: "Nguyễn Gia Dũng",
     foremanName: "Nguyễn Gia Thanh",
@@ -54,7 +62,11 @@ export function WorkSubmitted() {
     workerComments: "Em đã hoàn thành công việc được giao, đã khắc phục sự cố cầu giao tầng 2 , VINCOM Hai Bà Trưng ",
   },
   {
+<<<<<<< HEAD
     imageSrc: "https://scontent.fhan2-3.fna.fbcdn.net/v/t1.6435-9/204173775_1735354279993790_2419304328112645580_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=174925&_nc_ohc=TDwmDyxZw0oAX-8cFPM&_nc_ht=scontent.fhan2-3.fna&oh=00_AT_HqV156Xz1eOPebaSL-1NGpDbfDy-eRV8EOKoMYP69rA&oe=62B8894A",
+=======
+    imageSrc: "https://photo-cms-plo.zadn.vn/w850/Uploaded/2022/bzivycwk/2022_06_20/p10-anhchinh-2739.jpg",
+>>>>>>> 1e666ad367b7f48b7264ca6b3f9ffa94a76314dc
     idWorker: "20180003",
     workerName: "Nguyễn Văn Dũng",
     foremanName: "Nguyễn Gia Thanh",
@@ -64,7 +76,11 @@ export function WorkSubmitted() {
     workerComments: "Em đã hoàn thành công việc được giao, lắp đặt xong hệ thống điện cho máy bơm nước dưới hầm A3, theo đúng quy chuẩn ISO-ZYZ ",
   },
   {
+<<<<<<< HEAD
     imageSrc: "https://scontent.fhan2-3.fna.fbcdn.net/v/t1.6435-9/204173775_1735354279993790_2419304328112645580_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=174925&_nc_ohc=TDwmDyxZw0oAX-8cFPM&_nc_ht=scontent.fhan2-3.fna&oh=00_AT_HqV156Xz1eOPebaSL-1NGpDbfDy-eRV8EOKoMYP69rA&oe=62B8894A",
+=======
+    imageSrc: "https://photo-cms-plo.zadn.vn/w850/Uploaded/2022/bzivycwk/2022_06_20/p10-anhchinh-2739.jpg",
+>>>>>>> 1e666ad367b7f48b7264ca6b3f9ffa94a76314dc
     idWorker: "20180004",
     workerName: "Nguyễn Min Dũng",
     foremanName: "Nguyễn Gia Thanh",
@@ -74,7 +90,11 @@ export function WorkSubmitted() {
     workerComments: "Em đã hoàn thành công việc được giao, <br/>lắp đặt xong 6 bóng đèn ở tiền sảnh ",
   },
   {
+<<<<<<< HEAD
     imageSrc: "https://scontent.fhan2-3.fna.fbcdn.net/v/t1.6435-9/204173775_1735354279993790_2419304328112645580_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=174925&_nc_ohc=TDwmDyxZw0oAX-8cFPM&_nc_ht=scontent.fhan2-3.fna&oh=00_AT_HqV156Xz1eOPebaSL-1NGpDbfDy-eRV8EOKoMYP69rA&oe=62B8894A",
+=======
+    imageSrc: "https://photo-cms-plo.zadn.vn/w850/Uploaded/2022/bzivycwk/2022_06_20/p10-anhchinh-2739.jpg",
+>>>>>>> 1e666ad367b7f48b7264ca6b3f9ffa94a76314dc
     idWorker: "20180005",
     workerName: "Nguyễn Văn Dũn",
     foremanName: "Nguyễn Gia Thanh",
@@ -197,7 +217,7 @@ export function WorkSubmitted() {
                 <TableCell align="center" sx={{ fontSize: "16.5px" }}>
                   <div className="submitted-img">
                     <img id="submitted-image"
-                      src={submitted[params.workSubmitId].imageSrc ? submitted[params.workSubmitId].imageSrc : 'https://scontent.fhan2-3.fna.fbcdn.net/v/t1.6435-9/204173775_1735354279993790_2419304328112645580_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=174925&_nc_ohc=TDwmDyxZw0oAX-8cFPM&_nc_ht=scontent.fhan2-3.fna&oh=00_AT_HqV156Xz1eOPebaSL-1NGpDbfDy-eRV8EOKoMYP69rA&oe=62B8894A'} />
+                      src={submitted[params.workSubmitId].imageSrc ? submitted[params.workSubmitId].imageSrc : 'https://photo-cms-plo.zadn.vn/w850/Uploaded/2022/bzivycwk/2022_06_20/p10-anhchinh-2739.jpg'} />
                   </div>
                 </TableCell>
 
@@ -229,7 +249,11 @@ export function WorkSubmitted() {
                 <TableCell align="center" sx={{ fontSize: "16.5px" }}>
                   <div className="submitted-img">
                     <img id="submitted-image"
+<<<<<<< HEAD
                       src={submitted[params.workSubmitId].imageSrc ? submitted[params.workSubmitId].imageSrc : 'https://scontent.fhan2-3.fna.fbcdn.net/v/t1.6435-9/204173775_1735354279993790_2419304328112645580_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=174925&_nc_ohc=TDwmDyxZw0oAX-8cFPM&_nc_ht=scontent.fhan2-3.fna&oh=00_AT_HqV156Xz1eOPebaSL-1NGpDbfDy-eRV8EOKoMYP69rA&oe=62B8894A'} />
+=======
+                      src={submitted[params.workSubmitId].imageSrc ? submitted[params.workSubmitId].imageSrc : 'https://photo-cms-plo.zadn.vn/w850/Uploaded/2022/bzivycwk/2022_06_20/p10-anhchinh-2739.jpg'} />
+>>>>>>> 1e666ad367b7f48b7264ca6b3f9ffa94a76314dc
                   </div>
                 </TableCell>
 
