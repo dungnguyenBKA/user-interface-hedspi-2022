@@ -31,6 +31,13 @@ const JobTable = ({ rows }) => {
                             align='left'
                             sx={{ fontWeight: "bold", fontSize: "20px" }}
                         >
+                            Công nhân thực hiện
+                        </TableCell>
+
+                        <TableCell
+                            align='left'
+                            sx={{ fontWeight: "bold", fontSize: "20px" }}
+                        >
                             Trạng thái
                         </TableCell>
 
@@ -56,6 +63,13 @@ const JobTable = ({ rows }) => {
                                 sx={{ fontSize: "17.5px" }}
                             >
                                 {row.jobName}
+                            </TableCell>
+
+                            <TableCell
+                                align="left"
+                                sx={{ fontSize: "17.5px" }}
+                            >
+                                {row.workers}
                             </TableCell>
 
                             {row.jobStatus === 0 ?
