@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { teams } from '../Statistic/StatisticMockData';
 import { useParams } from 'react-router-dom';
 import {
     Box,
@@ -57,6 +58,8 @@ const ContractorSingleKPI = () => {
     console.log(KPIData);
     const singleKPI = KPIData.filter(element => element.id === convertedId)[0];
     console.log(singleKPI);
+
+    const exeTeam = teams[convertedId - 1];
 
     // 2. calculate percentage 
     const precise = (x) => {
@@ -220,12 +223,12 @@ const ContractorSingleKPI = () => {
                             fontWeight="bold"
                             color="red"
                             textTransform="none"
-                            fontSize="25.5px"
+                            fontSize="25px"
                             sx={{
-                                marginBottom: "5%"
+                                marginBottom: "2.5%"
                             }}
                         >
-                            Hạn chót hoàn thành KPI: {singleKPI.deadline}
+                            ・Hạn chót hoàn thành KPI: {singleKPI.deadline}
                         </Typography>
 
                         <Typography
@@ -233,9 +236,22 @@ const ContractorSingleKPI = () => {
                             fontWeight="bold"
                             color="text"
                             textTransform="none"
-                            fontSize="25.5px"
+                            fontSize="25px"
+                            sx={{
+                                marginBottom: "2.5%"
+                            }}
                         >
-                            Quản đốc phụ trách: {singleKPI.manager}
+                            ・Quản đốc phụ trách: {singleKPI.manager}
+                        </Typography>
+
+                        <Typography
+                            variant='button'
+                            fontWeight="bold"
+                            color="text"
+                            textTransform="none"
+                            fontSize="25px"
+                        >
+                            ・Team thực hiện: {exeTeam.name}
                         </Typography>
                     </Box>
                 </Box>
@@ -265,7 +281,7 @@ const ContractorSingleKPI = () => {
                             width: "90%",
                         }}
                     >
-                        <JobTable rows={dataRows} />
+                        <JobTable rows={dataRows}/>
                     </Box>
 
                     <Button
@@ -377,9 +393,14 @@ const ContractorSingleKPI = () => {
                                         // label="Danh sách quản đốc"
                                         onChange={onHandleUpdateChange}
                                     >
-                                        <MenuItem value={'Nguyễn Min Dũn'}>Nguyễn Min Dũn</MenuItem>
-                                        <MenuItem value={'Nguyễn Gia Thanh'}>Nguyễn Gia Thanh</MenuItem>
-                                        <MenuItem value={'Nguyễn Viết Huy'}>Nguyễn Viết Huy</MenuItem>
+                                        {teams.map(team => (
+                                            <MenuItem
+                                                value={team.leader}
+                                                key={team.id}
+                                            >
+                                                {team.leader}
+                                            </MenuItem>
+                                        ))}
                                     </Select>
                                 </FormControl>
                             </Box>
