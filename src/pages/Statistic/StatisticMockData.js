@@ -24,13 +24,27 @@ export const workers = [
     { id: 63, name: "Bùi Tiến Dũng", teamId: 6, completed: 8, asigned: 12, "Đúng hạn": 8, "Trễ hạn": 4 },
     { id: 64, name: "Nguyễn Quang", teamId: 6, completed: 8, asigned: 8, "Đúng hạn": 8, "Trễ hạn": 0 },
     { id: 65, name: "Trần Trọng Đức", teamId: 6, completed: 8, asigned: 10, "Đúng hạn": 8, "Trễ hạn": 2 },
+
+    { id: 71, name: "Vũ Văn Thành", teamId: 7, completed: 9, asigned: 10, "Đúng hạn": 9, "Trễ hạn": 1 },
+    { id: 72, name: "Kim Văn Minh", teamId: 7, completed: 8, asigned: 10, "Đúng hạn": 8, "Trễ hạn": 2 },
+    { id: 73, name: "Bùi Tiến Dũng", teamId: 7, completed: 8, asigned: 12, "Đúng hạn": 8, "Trễ hạn": 4 },
+    { id: 74, name: "Nguyễn Quang", teamId: 7, completed: 8, asigned: 8, "Đúng hạn": 8, "Trễ hạn": 0 },
+    { id: 75, name: "Trần Trọng Đức", teamId: 7, completed: 8, asigned: 10, "Đúng hạn": 8, "Trễ hạn": 2 },
+
+    { id: 80, name: "Lê Văn Chính", teamId: 8, completed: 4, asigned: 7, "Đúng hạn": 4, "Trễ hạn": 3 },
+    { id: 81, name: "Kiều Thị Hải", teamId: 8, completed: 7, asigned: 7, "Đúng hạn": 7, "Trễ hạn": 0 },
+    { id: 82, name: "Trương Gia Huy", teamId: 8, completed: 6, asigned: 7, "Đúng hạn": 6, "Trễ hạn": 1 },    
+    
 ];
 
 export const teams = [
     { id: 1, name: "Team A", completed: 15, allTask: 21, leader: "Nguyễn Văn Minh" },
     { id: 2, name: "Team C", completed: 17, allTask: 21, leader: "Lê Trung Thành" },
     { id: 3, name: "Team B", completed: 7, allTask: 14, leader: "Vũ Ngọc Phong" },
-    { id: 4, name: "Team D", completed: 20, allTask: 33, leader: "Trần Văn Ngọc" },
+    { id: 4, name: "Team D", completed: 20, allTask: 33, leader: "Nguyễn Văn Minh" },
     { id: 5, name: "Team E", completed: 24, allTask: 41, leader: "Phan Ngọc Huy" },
     { id: 6, name: "Team F", completed: 41, allTask: 50, leader: "Lê Thị Tuyết" },
+    { id: 7, name: "Team H", completed: 6, allTask: 21, leader: "Quản lý/Đốc công (Test)" },
+    { id: 8, name: "Team G", completed: 13, allTask: 17, leader: "Quản lý/Đốc công (Test)" },
+
 ]
