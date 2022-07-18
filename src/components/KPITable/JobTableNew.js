@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box, Typography, Button } from "@mui/material";
 
-const JobTableNew = ({ rows }) => {
+const JobTableNew = ({ rows, onOpen }) => {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ width: "100%" }} aria-label="simple table">
@@ -90,7 +90,8 @@ const JobTableNew = ({ rows }) => {
                     marginTop: "20px",
                     marginBottom: "20px",
                     fontSize: "17.5px",
-                  }}>
+                  }}
+                  onClick={onOpen}>
                   Chỉnh sửa công việc
                 </Button>
               </TableCell>
