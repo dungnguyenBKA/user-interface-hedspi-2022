@@ -4,7 +4,7 @@ import { Box, Typography, Button } from "@mui/material";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { KPIMockData, jobDataRows } from "./KPIMockData";
-import JobTable from "../../components/KPITable/JobTable";
+import JobTableNew from "../../components/KPITable/JobTableNew";
 import NewForm from "../../components/Form/NewForm";
 import useStorage from "./useStorage";
 import useJobStorage from "./useJobStorage";
@@ -183,7 +183,7 @@ const ManagerSingleKPI = () => {
           </Typography>
 
           {/* Table */}
-          <JobTable rows={JobData} />
+          <JobTableNew rows={JobData} />
 
           <Button
             variant="contained"
