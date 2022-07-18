@@ -14,14 +14,15 @@ import Paper from '@mui/material/Paper';
 
 export function WorkSubmitted() {
   const workers = [];
-  const [submit, setSubmit] = useState(0);
+  const [submit, setSubmit] = useState('Đang chờ duyệt');
   const params = useParams();
-  const id = Number(params.workSubmitId)
+  const id = Number(params.workSubmitId);
+  const [comment,setComment] =useState('');
+  
 
   const { works, changeSubmitWork } = useWork()
 
   const work = works.find((_item) => _item.id === id)
-  console.log({ work })
 
   const submitted = [{
     imageSrc: "https://photo-cms-plo.zadn.vn/w850/Uploaded/2022/bzivycwk/2022_06_20/p10-anhchinh-2739.jpg",
@@ -71,7 +72,8 @@ export function WorkSubmitted() {
     dayStart: "4/5/2022",
     deadline: "7/6/2022",
     proofDay: "4/6/2022",
-    workerComments: "Em đã hoàn thành công việc được giao, <br/>lắp đặt xong 6 bóng đèn ở tiền sảnh ",
+    workerComments: `Em đã hoàn thành công việc được giao.
+    Lắp đặt xong 6 bóng đèn ở tiền sảnh `,
   },
   {
     imageSrc: "https://photo-cms-plo.zadn.vn/w850/Uploaded/2022/bzivycwk/2022_06_20/p10-anhchinh-2739.jpg",
@@ -83,6 +85,11 @@ export function WorkSubmitted() {
     proofDay: "4/6/2022",
     workerComments: "Em đã hoàn thành công việc được giao, sửa xong hệ thống điện phòng 503 ",
   }]
+
+  //function
+  const handleTextarea =(event)=>{
+    setComment(event.target.value);
+  }
   return (
     <div className="submitted" style={{ marginBottom: "5%" }}>
       <NavBar />
@@ -205,7 +212,7 @@ export function WorkSubmitted() {
                   {submitted[params.workSubmitId].proofDay ? submitted[params.workSubmitId].proofDay : ''}
                 </TableCell>
 
-                <TableCell align="center" sx={{ fontSize: "16.5px" }}>
+                <TableCell align="center" sx={{ fontSize: "16.5px" }} >
                   {submitted[params.workSubmitId].workerComments ? submitted[params.workSubmitId].workerComments : ''}
                 </TableCell>
 
@@ -242,11 +249,10 @@ export function WorkSubmitted() {
                 </TableCell>
 
                 <TableCell align="center" sx={{ fontSize: "16.5px" }}>
-                  { }
+                  {comment}
                 </TableCell>
-
                 <TableCell align="center" sx={{ fontSize: "16.5px", color: "orange", fontWeight: "bold" }}>
-                  Đang chờ duyệt
+                  <p className={submit === 'Đã phê duyệt' ?  'text-success' : submit === 'Bị từ chối' ? 'text-danger'  : 'text-warning'}>{submit}</p>
                 </TableCell>
 
                 {/* <TableCell align="center" sx={{ fontSize: "16.5px", color: "red", fontWeight: "bold" }}>
@@ -317,18 +323,15 @@ export function WorkSubmitted() {
         <button
           className="btn-accept btn btn-success"
           style={{ marginRight: "10%" }}
-        >
-          <Link
-            to='/foreman'
-            className="accept-btn-link"
-            onClick={() => {
-              changeSubmitWork({
+          onClick={() => {
+            setSubmit('Đã phê duyệt')
+            changeSubmitWork({
                 ...work,
                 isSubmitted: true
               })
-            }}>
-            Phê duyệt công việc
-          </Link>
+
+          }}>
+        Phê duyệt công việc
         </button>
         <button className="btn-decline btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Từ chối phê duyệt
@@ -352,29 +355,29 @@ export function WorkSubmitted() {
         <button className="btn-decline btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Từ chối phê duyệt
         </button> */}
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <strong class="modal-title" id="exampleModalLabel">Nội dung từ chối phê duyệt</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <strong className="modal-title" id="exampleModalLabel">Nội dung từ chối phê duyệt</strong>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <textarea id="foreman-comments" className="form-control modal-body" rows="5"></textarea>
-              <div class="modal-footer">
-                <Link
-                  to='/foreman'
-                  className="declines-btn-link btn btn-danger"
+              <textarea id="foreman-comments" className="form-control modal-body" rows="5" value={comment} onChange={handleTextarea} ></textarea>
+              <div className="modal-footer">
+                <button
+                  className="declines-btn-link btn btn-danger" 
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
                   onClick={() => {
-                    const black = document.querySelectorAll('.modal-backdrop.fade.show');
-                    black.forEach(n => {
-                      n.style.display = 'none';
-                    })
                     changeSubmitWork({
                       ...work,
                       isSubmitted: false
                     })
+                    setComment(comment)
+                    setSubmit('Bị từ chối')
+
                   }
-                  }>Gửi lại cho công nhân</Link>
+                  }>Gửi lại cho công nhân</button>
               </div>
             </div>
           </div>

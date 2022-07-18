@@ -8,6 +8,11 @@ import AddTeamCard from '../../components/Statistic/AddTeamCard';
 import { CircularProgressbar } from "react-circular-progressbar";
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/footer";
+import useAuth from "../../hooks/useAuth";
+
+import { InputBase } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+
 
 import {
   LineChart,
@@ -49,10 +54,12 @@ const data = [
     "name": "Team F",
     "Tháng 6": 8,
     "Tháng 7": 16,
-  }
+  },
 ]
 
 const Statistic = () => {
+  const {user} = useAuth()
+  if(user.role == 'contractor')
   return (
     <Box
       sx={{
@@ -188,6 +195,26 @@ const Statistic = () => {
       >
         Danh sách và tiến độ các team
       </Typography>
+      <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            border: 0.5,
+            width: "25%",
+            height: "50px",
+            borderRadius: "10px",
+            marginTop: "1%",
+            marginLeft: "38%"
+          }}
+        >
+          <InputBase
+            placeholder='Tìm team theo tên'
+            sx={{ marginLeft: "2.5%", flex: 5 }}
+          />
+
+          <SearchIcon sx={{ flex: 1 }} />
+        </Box>
       <Box p={5}>
         <Grid container spacing={6}>
           {teams.map((element) => (
@@ -206,6 +233,66 @@ const Statistic = () => {
       <Footer />
     </Box>
   );
+
+  if(user.role == 'manager')return(
+    <Box
+    sx={{
+      display: "flex",
+      flexDirection: "column",
+      backgroundColor: "white",
+      boxShadow: "none",
+      overflow: "visible",
+    }}
+  >
+  <NavBar />
+
+    <Typography
+        sx={{
+          fontSize: "30px",
+          textAlign: "center",
+          marginTop: "30px"
+        }}
+      >
+        Danh sách và tiến độ các team
+      </Typography>
+      <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            border: 0.5,
+            width: "25%",
+            height: "50px",
+            borderRadius: "10px",
+            marginTop: "1%",
+            marginLeft: "38%"
+          }}
+        >
+          <InputBase
+            placeholder='Tìm team theo tên'
+            sx={{ marginLeft: "2.5%", flex: 5 }}
+          />
+
+          <SearchIcon sx={{ flex: 1 }} />
+        </Box>
+      <Box p={5}>
+        <Grid container spacing={6}>
+          {teams.filter(item => item.leader == user.username).map((element) => (
+            <Grid
+              item xs={12} sm={6} md={4} lg={3} xl={2}
+              key={element.id}
+            >
+              <TeamCard data={element} />
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
+      <Footer />
+
+  </Box>
+
+  );
+  return <div></div>
 }
 
 export default Statistic;
