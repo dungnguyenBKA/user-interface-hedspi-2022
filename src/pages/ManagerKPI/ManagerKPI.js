@@ -1,33 +1,36 @@
-import React, { useState } from 'react';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import { Typography, InputBase } from '@mui/material';
-import { KPIMockData, ManagerList } from './KPIMockData';
-import ManagerKPICard from '../../components/KPICard/ManagerKPICard';
+import React, { useState, useEffect } from "react";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import { Typography, InputBase } from "@mui/material";
+import { KPIMockData, ManagerList } from "./KPIMockData";
+import { workers, teams } from "../Statistic/StatisticMockData";
+import ManagerKPICard from "../../components/KPICard/ManagerKPICard";
 import NavBar from "../../components/NavBar/NavBar";
 import Footer from "../../components/Footer/footer";
-import SearchIcon from '@mui/icons-material/Search';
-import useStorage from './useStorage';
+import SearchIcon from "@mui/icons-material/Search";
+import useStorage from "./useStorage";
 const ManagerKPI = () => {
   const [KPIData, putKPIData, clearKPIData] = useStorage();
-
-  const [searchName, setSearchName] = useState('');
+  const [searchName, setSearchName] = useState("");
+  useEffect(() => {
+    const newKPIArray = KPIData.filter(
+      (element) => element.manager.includes(teams[0].leader) === true
+    );
+    putKPIData(newKPIArray);
+  }, []);
   const onChangeSearchName = (event) => {
-    if (event.target.value === '') {
-      putKPIData(KPIMockData);
-      setSearchName('');
+    if (event.target.value === "") {
+      setSearchName("");
     } else {
       setSearchName(event.target.value);
       const newKPIArray = KPIData.filter(
-        element => element.name.includes(searchName) === true
+        (element) => element.name.includes(searchName) === true
       );
-      console.log(searchName);
-      console.log(KPIData);
       putKPIData(newKPIArray);
     }
-  }
+  };
   return (
-    <>      
+    <>
       <Box
         sx={{
           display: "flex",
@@ -35,27 +38,24 @@ const ManagerKPI = () => {
           backgroundColor: "white",
           boxShadow: "none",
           overflow: "visible",
-        }}
-      >
+        }}>
         <NavBar />
 
         <Typography
           sx={{
             fontSize: "30px",
             textAlign: "center",
-            marginTop: "30px"
-          }}
-        >
+            marginTop: "30px",
+          }}>
           DỰ ÁN LẮP ĐẶT HỆ THỐNG ĐIỆN CHO VINCOM HAI BÀ TRƯNG
         </Typography>
         <Typography
           sx={{
             fontSize: "30px",
             textAlign: "center",
-            marginTop: "30px"
-          }}
-        >
-          KPI được giao cho Quản đốc: {ManagerList[1].name}
+            marginTop: "30px",
+          }}>
+          KPI được giao cho Quản đốc: {teams[0].leader}
         </Typography>
         <Box
           sx={{
@@ -67,11 +67,10 @@ const ManagerKPI = () => {
             height: "50px",
             borderRadius: "10px",
             marginTop: "1%",
-            marginLeft: "38%"
-          }}
-        >
+            marginLeft: "38%",
+          }}>
           <InputBase
-            placeholder='Tìm KPI theo tên'
+            placeholder="Tìm KPI theo tên"
             value={searchName}
             onChange={onChangeSearchName}
             sx={{ marginLeft: "2.5%", flex: 5 }}
@@ -81,22 +80,18 @@ const ManagerKPI = () => {
         </Box>
         <Box p={5}>
           <Grid container spacing={6}>
-            {KPIMockData.map((element) => (
-              <Grid
-                item xs={12} sm={6} md={4} lg={3} xl={2}
-                key={element.id}
-              >
+            {KPIData.map((element) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={element.id}>
                 <ManagerKPICard data={element} />
               </Grid>
             ))}
-            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
-            </Grid>
+            <Grid item xs={12} sm={6} md={4} lg={3} xl={2}></Grid>
           </Grid>
         </Box>
         <Footer />
       </Box>
     </>
   );
-}
+};
 
 export default ManagerKPI;

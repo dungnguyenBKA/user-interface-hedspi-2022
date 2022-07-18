@@ -1,19 +1,18 @@
-import { useState, useEffect } from 'react';
-import { KPIMockData } from './KPIMockData';
+import { useState, useEffect } from "react";
+import { KPIMockData } from "./KPIMockData";
 
-const STORAGE_KEY = 'MKPIs';
+const STORAGE_KEY = "MKPIs";
 
 function useStorage() {
-  
   const [items, setItems] = useState(KPIMockData);
   useEffect(() => {
     const itemsFromStorage = JSON.parse(localStorage.getItem(STORAGE_KEY));
     if (itemsFromStorage) {
       setItems(itemsFromStorage);
-    } 
+    }
   }, []);
 
-  const putItems = items => {
+  const putItems = (items) => {
     setItems(items);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
   };
